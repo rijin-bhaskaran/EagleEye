@@ -18,6 +18,8 @@ Keys (OpenCV window): q quit | c recalibrate | m mute | h hide HUD | s save fram
 from __future__ import annotations
 
 import argparse
+import sys
+import threading
 import time
 from collections import deque
 from pathlib import Path
@@ -62,8 +64,71 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
+class LiveRenderer:
+    """Streams the camera to the browser at camera rate, independent of inference.
+
+    Inference (face mesh, CNN, fusion) can take longer than one frame interval.
+    If the browser feed waited for it, the video would stutter below 30 FPS and
+    lag by the full processing time. This thread instead takes every new camera
+    frame, paints the most recent overlay onto it and publishes it, so the
+    video is live and only the overlay can trail by one inference pass.
+    """
+
+    def __init__(self, stream, hub, get_overlay, get_roi, hud_on) -> None:
+        self._stream, self._hub = stream, hub
+        self._get_overlay, self._get_roi, self._hud_on = get_overlay, get_roi, hud_on
+        self._stop = threading.Event()
+        self.fps = 0.0
+        self._thread = threading.Thread(target=self._run, daemon=True)
+
+    def start(self) -> None:
+        self._thread.start()
+
+    def stop(self) -> None:
+        self._stop.set()
+        self._thread.join(timeout=1.0)
+
+    def _run(self) -> None:
+        seq, count, stamp = -1, 0, time.perf_counter()
+        while not self._stop.is_set():
+            seq, frame = self._stream.wait_latest(seq, 0.1)
+            if frame is None:
+                continue
+            if self._hud_on():
+                points, pose, detections = self._get_overlay()
+                try:
+                    if points is not None:
+                        draw_landmarks(frame, points)
+                        if pose is not None:
+                            draw_pose_axis(frame, points, pose)
+                    draw_wheel_roi(frame, self._get_roi())
+                    draw_detections(frame, detections)
+                except Exception:   # a half-updated overlay must never stall the video
+                    pass
+            self._hub.publish_frame(frame)
+
+            count += 1
+            now = time.perf_counter()
+            if now - stamp >= 1.0:
+                self.fps = count / (now - stamp)
+                count, stamp = 0, now
+
+
+def _timer_resolution(ms: int):
+    """Ask Windows for ms-granularity timers (default ~15.6 ms); no-op elsewhere."""
+    if sys.platform != "win32":
+        return None
+    try:
+        import ctypes
+        ctypes.windll.winmm.timeBeginPeriod(ms)
+        return lambda: ctypes.windll.winmm.timeEndPeriod(ms)
+    except Exception:
+        return None
+
+
 def main() -> None:
     args = parse_args()
+    restore_timer = _timer_resolution(1)
     cfg = load_config(args.config)
 
     if args.source is not None:
@@ -80,7 +145,9 @@ def main() -> None:
         cfg.camera.source, cfg.camera.width, cfg.camera.height,
         cfg.camera.fps, cfg.camera.flip,
     )
-    pipeline = VigilEyePipeline(cfg, use_objects=not args.no_objects)
+    pipeline = VigilEyePipeline(
+        cfg, use_objects=not args.no_objects, async_objects=not stream.is_file
+    )
     alerts = AlertManager(cfg.alerts)
     logger = None if args.no_log else SessionLogger(cfg.logging, args.driver_id, args.vehicle_id)
 
@@ -102,6 +169,7 @@ def main() -> None:
     backend = f"MediaPipe {pipeline.face.backend} · {cfg.fusion.mode}"
     writer = None
     fps_hist = deque(maxlen=30)
+    last_tick = None
     show_hud = True
     muted = False
     frames = 0
@@ -109,6 +177,18 @@ def main() -> None:
     previous_state = None
     running = True
     want_snapshot = False
+    warned_low_fps = False
+
+    overlay = (None, None, [])      # latest (landmarks, pose, detections) for the renderer
+    renderer = None
+    if hub and not stream.is_file:
+        renderer = LiveRenderer(
+            stream, hub,
+            get_overlay=lambda: overlay,
+            get_roi=lambda: pipeline.hands.roi,
+            hud_on=lambda: show_hud,
+        )
+        renderer.start()
 
     if logger:
         print(f"[VigilEye] session {logger.session_id} started")
@@ -133,9 +213,21 @@ def main() -> None:
                     send_to_pico(current_state)
                     previous_state = current_state
             latency_ms = (time.perf_counter() - t0) * 1000.0
-            fps_hist.append(1000.0 / max(latency_ms, 1e-3))
-            fps = sum(fps_hist) / len(fps_hist)
+            overlay = (pipeline.last_points, pipeline.last_pose, pipeline.last_detections)
+            now = time.perf_counter()
+            if last_tick is not None:
+                fps_hist.append(1.0 / max(now - last_tick, 1e-3))
+            last_tick = now
+            fps = sum(fps_hist) / len(fps_hist) if fps_hist else 0.0
             frames += 1
+
+            if not warned_low_fps and frames == 90 and not stream.is_file:
+                video_fps = renderer.fps if renderer else stream.capture_fps
+                if 0 < video_fps < 28:      # 28 leaves room for 30 FPS jitter
+                    print(f"[VigilEye] WARNING: video is running at {video_fps:.0f} FPS "
+                          f"(camera delivers {stream.capture_fps:.0f}). Low light makes webcams "
+                          "lower their frame rate - add light or disable auto-exposure.")
+                warned_low_fps = True
 
             event = None
             if not muted and not pipeline.calibrating:
@@ -172,13 +264,16 @@ def main() -> None:
             if hub:
                 hub.publish(
                     signals, result,
-                    fps=fps, latency_ms=latency_ms,
+                    fps=(renderer.fps or fps) if renderer else fps,
+                    latency_ms=latency_ms,
                     calibrating=pipeline.calibrating,
                     calib_progress=max(calib_progress, 0.0),
                     muted=muted, backend=backend, pico=pico_status(),
                 )
 
-            if show_window or args.record or hub:
+            # With a renderer thread the browser feed is painted there; the main
+            # loop only builds a canvas for the window, recording or a snapshot.
+            if show_window or args.record or want_snapshot or (hub and renderer is None):
                 canvas = frame.copy()
                 if show_hud:
                     if pipeline.last_points is not None:
@@ -197,7 +292,7 @@ def main() -> None:
                         calibrating=calib_progress,
                     )
 
-                if hub:
+                if hub and renderer is None:
                     hub.publish_frame(canvas)
 
                 if want_snapshot:
@@ -235,7 +330,11 @@ def main() -> None:
     finally:
         elapsed = max(time.time() - t_start, 1e-6)
         mean_fps = frames / elapsed
+        if renderer is not None:
+            renderer.stop()
         stream.release()
+        if restore_timer:
+            restore_timer()
         pipeline.close()
         close_pico()
         if writer is not None:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""VigilEye fleet dashboard.
+"""EagleEye fleet dashboard.
 
     streamlit run dashboard/app.py
 
@@ -11,13 +11,16 @@ rather than only to the driver in the seat.
 """
 from __future__ import annotations
 
+import base64
 import sqlite3
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(page_title="VigilEye Fleet Dashboard", page_icon="👁", layout="wide")
+LOGO = Path(__file__).resolve().parent.parent / "vigileye" / "webui" / "assets" / "ettiksoft-logo.png"
+
+st.set_page_config(page_title="EagleEye Fleet Dashboard", page_icon="👁", layout="wide")
 
 DB_DEFAULT = "logs/vigileye.db"
 
@@ -37,21 +40,37 @@ def load(db_path: str):
     return sessions, events
 
 
-st.title("👁 VigilEye — Fleet Safety Analytics")
+st.title("👁 EagleEye — Fleet Safety Analytics")
 
 db_path = st.sidebar.text_input("Event database", DB_DEFAULT)
 sessions, events = load(db_path)
 
+
+def sidebar_logo() -> None:
+    """Ettiksoft mark at the foot of the sidebar, directly on the dark panel."""
+    if not LOGO.exists():
+        return
+    b64 = base64.b64encode(LOGO.read_bytes()).decode()
+    st.sidebar.markdown(
+        "<div style='margin-top:2.5rem;padding:4px 6px'>"
+        f"<img alt='Ettiksoft' style='width:100%;display:block' src='data:image/png;base64,{b64}'></div>",
+        unsafe_allow_html=True,
+    )
+
+
 if sessions is None:
     st.warning(f"No database at `{db_path}`. Run `python run.py` to record a session first.")
+    sidebar_logo()
     st.stop()
 if sessions.empty:
     st.info("Database exists but contains no sessions yet.")
+    sidebar_logo()
     st.stop()
 
 # -- filters ---------------------------------------------------------------
 drivers = ["All"] + sorted(sessions["driver_id"].dropna().unique().tolist())
 driver = st.sidebar.selectbox("Driver", drivers)
+sidebar_logo()
 if driver != "All":
     sessions = sessions[sessions["driver_id"] == driver]
     events = events[events["session_id"].isin(sessions["session_id"])]

@@ -10,6 +10,7 @@ the vehicle.
 """
 from __future__ import annotations
 
+import threading
 import time
 from typing import Optional, Tuple
 
@@ -34,8 +35,61 @@ from .metrics import (
 )
 
 
+class _ObjectWorker:
+    """Runs YOLO + MediaPipe Hands on a background thread.
+
+    These two detectors cost ~60 ms/frame together and would cap the live
+    loop at ~12 FPS if run inline. The worker always processes the newest
+    submitted frame (older ones are dropped) and the main loop reads the
+    most recent result, so the face/fusion path runs at camera rate. Both
+    models release the GIL while inferring, so the threads genuinely overlap.
+    """
+
+    def __init__(self, phone: PhoneDetector, hands: HandsOnWheelDetector) -> None:
+        self._phone, self._hands = phone, hands
+        self._cond = threading.Condition()
+        self._job = None
+        self._stop = False
+        self.result = (False, 0.0, [], 0, 0, False)
+        self._thread = threading.Thread(target=self._loop, daemon=True)
+        self._thread.start()
+
+    def submit(self, frame_bgr: np.ndarray, rgb: np.ndarray, ts: float) -> None:
+        with self._cond:
+            self._job = (frame_bgr, rgb, ts)
+            self._cond.notify()
+
+    def _loop(self) -> None:
+        while True:
+            with self._cond:
+                while self._job is None and not self._stop:
+                    self._cond.wait()
+                if self._stop:
+                    return
+                frame_bgr, rgb, ts = self._job
+                self._job = None
+            try:
+                sustained, conf, dets = self._phone.update(frame_bgr, ts)
+                detected, on_wheel, off = self._hands.update(rgb, ts)
+                self.result = (sustained, conf, dets, detected, on_wheel, off)
+            except Exception as exc:  # keep the thread alive
+                print(f"[VigilEye] object worker error: {exc}")
+
+    def close(self) -> None:
+        with self._cond:
+            self._stop = True
+            self._cond.notify()
+        self._thread.join(timeout=2.0)
+
+
 class VigilEyePipeline:
-    def __init__(self, cfg: Cfg, calibrate: bool = True, use_objects: Optional[bool] = None) -> None:
+    def __init__(
+        self,
+        cfg: Cfg,
+        calibrate: bool = True,
+        use_objects: Optional[bool] = None,
+        async_objects: bool = False,
+    ) -> None:
         self.cfg = cfg
 
         self.face = FaceMeshDetector(cfg.face_mesh)
@@ -66,6 +120,10 @@ class VigilEyePipeline:
         hands_cfg = Cfg(dict(cfg.objects.hands))
         hands_cfg["enabled"] = bool(cfg.objects.hands.enabled) and objects_on
         self.hands = HandsOnWheelDetector(hands_cfg)
+
+        self._objects: Optional[_ObjectWorker] = None
+        if async_objects and (self.phone.enabled or self.hands.enabled):
+            self._objects = _ObjectWorker(self.phone, self.hands)
 
         rule = RuleFusion(cfg.fusion, cfg.eye, cfg.head)
         self.fusion = rule
@@ -122,10 +180,15 @@ class VigilEyePipeline:
 
         # Object cues run regardless of face detection: a driver looking
         # completely away may lose the face mesh but still hold a phone.
-        phone_sustained, phone_conf, detections = self.phone.update(frame_bgr, ts)
+        if self._objects is not None:
+            self._objects.submit(frame_bgr, rgb, ts)
+            (phone_sustained, phone_conf, detections,
+             s.hands_detected, s.hands_on_wheel, s.hands_off) = self._objects.result
+        else:
+            phone_sustained, phone_conf, detections = self.phone.update(frame_bgr, ts)
+            s.hands_detected, s.hands_on_wheel, s.hands_off = self.hands.update(rgb, ts)
         self.last_detections = detections
         s.phone_sustained, s.phone_conf = phone_sustained, phone_conf
-        s.hands_detected, s.hands_on_wheel, s.hands_off = self.hands.update(rgb, ts)
 
         if not face.found:
             self.last_points = None
@@ -207,5 +270,7 @@ class VigilEyePipeline:
         return self.fusion.time_in_state(ts)
 
     def close(self) -> None:
+        if self._objects is not None:
+            self._objects.close()
         self.face.close()
         self.hands.close()

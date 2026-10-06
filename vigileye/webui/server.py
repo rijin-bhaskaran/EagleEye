@@ -1,10 +1,11 @@
-"""Local HTTP server for the VigilEye Command Deck.
+"""Local HTTP server for the EagleEye Command Deck.
 
 Deliberately built on the standard library: the whole point of this UI is to
 come up automatically with ``python run.py`` on an edge device, so it must not
 add a web framework to the install. Three endpoints do the work:
 
 * ``/``               - the dashboard page
+* ``/assets/*``       - static images (logo)
 * ``/video``          - annotated frames as an MJPEG stream
 * ``/api/telemetry``  - the element-id -> value payload the page polls
 * ``/api/command``    - recalibrate / mute / snapshot / stop from the browser
@@ -24,6 +25,8 @@ from .hub import TelemetryHub
 
 _HERE = Path(__file__).parent
 _INDEX = _HERE / "index.html"
+_ASSETS = _HERE / "assets"
+_ASSET_TYPES = {".png": "image/png", ".svg": "image/svg+xml", ".ico": "image/x-icon"}
 _BOUNDARY = "vigileyeframe"
 
 _COMMANDS = {"recalibrate", "mute", "unmute", "snapshot", "stop"}
@@ -33,6 +36,9 @@ class _Handler(BaseHTTPRequestHandler):
     hub: TelemetryHub = None            # type: ignore[assignment]
     db_path: str = "logs/vigileye.db"
     protocol_version = "HTTP/1.1"
+    # Send small writes immediately; Nagle + delayed ACK can hold an MJPEG
+    # frame back for tens of milliseconds.
+    disable_nagle_algorithm = True
 
     # Per-frame request logging would drown the console the pipeline uses.
     def log_message(self, *args) -> None:  # noqa: D102
@@ -63,6 +69,13 @@ class _Handler(BaseHTTPRequestHandler):
                 self._send(200, _INDEX.read_bytes(), "text/html; charset=utf-8")
             except OSError as exc:
                 self._send(500, f"index.html unreadable: {exc}".encode(), "text/plain")
+        elif route.startswith("/assets/"):
+            asset = (_ASSETS / route[len("/assets/"):]).resolve()
+            ctype = _ASSET_TYPES.get(asset.suffix.lower())
+            if ctype is None or _ASSETS.resolve() not in asset.parents or not asset.is_file():
+                self._send(404, b"not found", "text/plain")
+            else:
+                self._send(200, asset.read_bytes(), ctype, cache=True)
         elif route == "/video":
             self._stream_video()
         elif route == "/api/telemetry":
@@ -106,12 +119,11 @@ class _Handler(BaseHTTPRequestHandler):
         self.end_headers()
         try:
             for jpeg in self.hub.frames():
+                # One write per frame: header, JPEG and trailer in a single send.
                 self.wfile.write(
                     f"--{_BOUNDARY}\r\nContent-Type: image/jpeg\r\n"
-                    f"Content-Length: {len(jpeg)}\r\n\r\n".encode()
+                    f"Content-Length: {len(jpeg)}\r\n\r\n".encode() + jpeg + b"\r\n"
                 )
-                self.wfile.write(jpeg)
-                self.wfile.write(b"\r\n")
         except (BrokenPipeError, ConnectionAbortedError, ConnectionResetError):
             pass   # browser navigated away or closed the tab
 

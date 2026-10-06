@@ -343,7 +343,7 @@ def _radar(c: Dict[str, float]) -> str:
     return " ".join(pts)
 
 
-_TONE = {"Fatigue": "bg-slate-700", "Distract": "bg-slate-600", "Camera": "bg-slate-500"}
+_TONE = {"Fatigue": "bg-coral-600", "Distract": "bg-slate-700", "Camera": "bg-slate-500"}
 
 
 def _alert_rows(alerts: List[Dict[str, object]], empty: str) -> str:
