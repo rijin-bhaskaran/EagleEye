@@ -90,7 +90,7 @@ alerts:
   enabled: true
   cooldown_s: 5.0             # min gap between alerts of the same level
   escalate_s: 8.0             # unresolved state this long => escalate
-  volume: 0.35
+  volume: 0.85                # 0.0-1.0 peak level; the urgent level-2 tone plays 25% higher (max 1.0)
   tts: false                  # spoken alerts via pyttsx3 (optional)
 
 logging:

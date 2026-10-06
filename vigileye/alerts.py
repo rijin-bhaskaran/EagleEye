@@ -33,13 +33,18 @@ _MESSAGES = {
 
 def _tone(freq: float, seconds: float, volume: float) -> np.ndarray:
     t = np.linspace(0, seconds, int(SAMPLE_RATE * seconds), endpoint=False)
-    wave = np.sin(2 * np.pi * freq * t)
+    # Odd harmonics make the tone square-ish: at the same peak level it carries
+    # more energy than a pure sine, so it sounds markedly louder and cuts through
+    # road and cabin noise. Normalised so ``volume`` still maps to peak amplitude.
+    phase = 2 * np.pi * freq * t
+    wave = np.sin(phase) + np.sin(3 * phase) / 3 + np.sin(5 * phase) / 5
+    wave /= np.max(np.abs(wave))
     # 10 ms raised-cosine fade in/out to avoid audible clicks
     fade = max(1, int(0.01 * SAMPLE_RATE))
     envelope = np.ones_like(wave)
     envelope[:fade] = np.linspace(0, 1, fade)
     envelope[-fade:] = np.linspace(1, 0, fade)
-    return (wave * envelope * volume).astype(np.float32)
+    return np.clip(wave * envelope * volume, -1.0, 1.0).astype(np.float32)
 
 
 class AudioBackend:
@@ -124,13 +129,14 @@ class AlertManager:
                 if event.level == 1:
                     self.audio.play(_tone(880, 0.25, self.volume))
                 else:
+                    loud = min(1.0, self.volume * 1.25)     # urgent tone sits above level 1
                     burst = np.concatenate(
                         [
-                            _tone(1200, 0.18, self.volume),
+                            _tone(1200, 0.18, loud),
                             np.zeros(int(0.06 * SAMPLE_RATE), dtype=np.float32),
-                            _tone(1200, 0.18, self.volume),
+                            _tone(1200, 0.18, loud),
                             np.zeros(int(0.06 * SAMPLE_RATE), dtype=np.float32),
-                            _tone(1400, 0.30, self.volume),
+                            _tone(1400, 0.30, loud),
                         ]
                     )
                     self.audio.play(burst)

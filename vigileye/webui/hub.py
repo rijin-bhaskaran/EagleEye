@@ -263,6 +263,7 @@ class TelemetryHub:
             "blinkPath": {"d": _spark(hist["blink"], 0.0, 40.0)},
             "blinkFill": {"d": _spark(hist["blink"], 0.0, 40.0, close=True)},
             "marPath": {"d": _spark(hist["mar"], 0.0, max(0.9, s.mar_threshold * 1.5))},
+            "marFill": {"d": _spark(hist["mar"], 0.0, max(0.9, s.mar_threshold * 1.5), close=True)},
             "yawPath": {"d": _spark(hist["yaw"], -45.0, 45.0)},
             "yawFill": {"d": _spark(hist["yaw"], -45.0, 45.0, close=True)},
             "pitchPath": {"d": _spark(hist["pitch"], -45.0, 45.0)},
@@ -273,6 +274,11 @@ class TelemetryHub:
             "trendPerclosPath": {"d": _spark(hist["perclos"], 0.0, 0.5, w=640, h=160)},
             "trendScorePath": {"d": _spark(hist["drowsy"], 0.0, 1.0, w=640, h=160)},
             "trendDistractPath": {"d": _spark(hist["distract"], 0.0, 1.0, w=640, h=160)},
+            # Closed area under each trend line: the soft shadow the cockpit tiles have.
+            "trendEarFill": {"d": _spark(hist["ear"], 0.0, max(0.45, s.ear_threshold * 2), w=640, h=160, close=True)},
+            "trendPerclosFill": {"d": _spark(hist["perclos"], 0.0, 0.5, w=640, h=160, close=True)},
+            "trendScoreFill": {"d": _spark(hist["drowsy"], 0.0, 1.0, w=640, h=160, close=True)},
+            "trendDistractFill": {"d": _spark(hist["distract"], 0.0, 1.0, w=640, h=160, close=True)},
             "radarShape": {"points": _radar(c)},
             "riskArc": {"stroke-dashoffset": f"{251.2 * (1 - risk / 100.0):.1f}"},
         }
