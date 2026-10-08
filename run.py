@@ -178,7 +178,6 @@ def main() -> None:
     running = True
     want_snapshot = False
     warned_low_fps = False
-    no_frame_since = None
 
     overlay = (None, None, [])      # latest (landmarks, pose, detections) for the renderer
     renderer = None
@@ -199,20 +198,7 @@ def main() -> None:
         while running:
             ok, frame, ts = stream.read()
             if not ok:
-                if stream.is_file:
-                    break                # end of the video file
-                # A webcam can be slow to warm up (or briefly stall); keep the
-                # UI alive and retry rather than shutting everything down.
-                if no_frame_since is None:
-                    no_frame_since = time.time()
-                    print("[VigilEye] waiting for the camera to deliver frames...")
-                elif time.time() - no_frame_since > 15.0:
-                    print("[VigilEye] ERROR: no frames from the camera for 15s. Close any "
-                          "other app using it (Teams/Zoom/browser), check Windows camera "
-                          "privacy settings, or try camera.source: 1 in config.yaml.")
-                    break
-                continue
-            no_frame_since = None
+                break
 
             t0 = time.perf_counter()
             signals, result = pipeline.process(frame, ts)
