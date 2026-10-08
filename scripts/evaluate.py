@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate EagleEye - accuracy of both fusion modes, and runtime cost.
+"""Evaluate VigilEye - accuracy of both fusion modes, and runtime cost.
 
     # classification quality of the trained LSTM on held-out features
     python scripts/evaluate.py model --features data/features.csv
@@ -22,10 +22,10 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from eagleeye.config import load_config          # noqa: E402
-from eagleeye.fusion import DriverState          # noqa: E402
-from eagleeye.pipeline import EagleEyePipeline   # noqa: E402
-from eagleeye.video import VideoStream           # noqa: E402
+from vigileye.config import load_config          # noqa: E402
+from vigileye.fusion import DriverState          # noqa: E402
+from vigileye.pipeline import VigilEyePipeline   # noqa: E402
+from vigileye.video import VideoStream           # noqa: E402
 
 CLASSES = ["ALERT", "DROWSY", "DISTRACTED"]
 STATE_TO_ID = {DriverState.ALERT: 0, DriverState.DROWSY: 1, DriverState.DISTRACTED: 2}
@@ -36,8 +36,8 @@ def eval_model(args) -> None:
     import torch
     from sklearn.metrics import classification_report, confusion_matrix
 
-    from eagleeye.fusion import FEATURE_NAMES
-    from eagleeye.temporal_model import TemporalFusion
+    from vigileye.fusion import FEATURE_NAMES
+    from vigileye.temporal_model import TemporalFusion
 
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
     from train_fusion import make_windows
@@ -77,7 +77,7 @@ def eval_rules(args) -> None:
         for video in sorted(label_dir.iterdir()):
             if video.suffix.lower() not in {".avi", ".mp4", ".mov", ".mkv"}:
                 continue
-            pipeline = EagleEyePipeline(cfg, calibrate=False, use_objects=not args.no_objects)
+            pipeline = VigilEyePipeline(cfg, calibrate=False, use_objects=not args.no_objects)
             cap = cv2.VideoCapture(str(video))
             fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
             i = 0
@@ -107,7 +107,7 @@ def eval_speed(args) -> None:
     stream = VideoStream(args.source, cfg.camera.width, cfg.camera.height, cfg.camera.fps, False)
 
     for label, use_objects in (("face+fusion only", False), ("full (with YOLO+hands)", True)):
-        pipeline = EagleEyePipeline(cfg, calibrate=False, use_objects=use_objects)
+        pipeline = VigilEyePipeline(cfg, calibrate=False, use_objects=use_objects)
         times = []
         for _ in range(args.frames):
             ok, frame, ts = stream.read()
@@ -134,7 +134,7 @@ def main() -> None:
 
     m = sub.add_parser("model")
     m.add_argument("--features", default="data/features.csv")
-    m.add_argument("--checkpoint", default="models/eagleeye_lstm.pt")
+    m.add_argument("--checkpoint", default="models/vigileye_lstm.pt")
     m.add_argument("--window", type=int, default=30)
     m.add_argument("--stride", type=int, default=5)
     m.set_defaults(func=eval_model)

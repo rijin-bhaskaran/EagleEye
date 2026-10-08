@@ -1,4 +1,4 @@
-"""The EagleEye perception pipeline.
+"""The VigilEye perception pipeline.
 
 One class, one method: ``process(frame_bgr, ts) -> (Signals, FusionResult)``.
 
@@ -73,7 +73,7 @@ class _ObjectWorker:
                 detected, on_wheel, off = self._hands.update(rgb, ts)
                 self.result = (sustained, conf, dets, detected, on_wheel, off)
             except Exception as exc:  # keep the thread alive
-                print(f"[EagleEye] object worker error: {exc}")
+                print(f"[VigilEye] object worker error: {exc}")
 
     def close(self) -> None:
         with self._cond:
@@ -82,7 +82,7 @@ class _ObjectWorker:
         self._thread.join(timeout=2.0)
 
 
-class EagleEyePipeline:
+class VigilEyePipeline:
     def __init__(
         self,
         cfg: Cfg,
@@ -100,7 +100,7 @@ class EagleEyePipeline:
         try:
             self.cnn = CNNDrowsinessPredictor("models/drowsiness_model.pth")
         except Exception as exc:
-            print(f"[EagleEye] CNN drowsiness model disabled: {exc}")
+            print(f"[VigilEye] CNN drowsiness model disabled: {exc}")
             self.cnn = None
 
         self.perclos = PerclosTracker(cfg.eye.perclos_window_s)
@@ -139,7 +139,7 @@ class EagleEyePipeline:
                 else:
                     self.temporal = None
             except Exception as exc:
-                print(f"[EagleEye] temporal model disabled: {exc}")
+                print(f"[VigilEye] temporal model disabled: {exc}")
                 self.temporal = None
 
         # Calibration -----------------------------------------------------
@@ -152,7 +152,7 @@ class EagleEyePipeline:
             if saved:
                 self.baseline = Baseline.from_dict(saved)
                 self.gaze.set_baseline(self.baseline.gaze_h, self.baseline.gaze_v)
-                print(f"[EagleEye] loaded calibration: EAR threshold {self.baseline.ear_threshold:.3f}")
+                print(f"[VigilEye] loaded calibration: EAR threshold {self.baseline.ear_threshold:.3f}")
             else:
                 self.calibrator = Calibrator(cfg.calibration, cfg.eye, cfg.mouth)
 
@@ -238,7 +238,7 @@ class EagleEyePipeline:
                 self.baseline = self.calibrator.result
                 self.gaze.set_baseline(self.baseline.gaze_h, self.baseline.gaze_v)
                 save_calibration(self.cfg.calibration.file, self.baseline.to_dict())
-                print(f"[EagleEye] calibrated: EAR open {self.baseline.ear_open:.3f}, "
+                print(f"[VigilEye] calibrated: EAR open {self.baseline.ear_open:.3f}, "
                       f"threshold {self.baseline.ear_threshold:.3f}")
             s.ear_threshold = self.baseline.ear_threshold
             return s, FusionResult(state=DriverState.ALERT, source="calibrating")

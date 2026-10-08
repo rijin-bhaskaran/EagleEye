@@ -1,12 +1,11 @@
 """Optional serial link to a Raspberry Pi Pico.
 
 The Pico is an accessory, not a dependency: if ``pyserial`` is missing or no
-board is on the port, EagleEye keeps running and simply reports the link as
+board is on the port, VigilEye keeps running and simply reports the link as
 offline. Failures are announced once rather than on every state change, so a
 missing board cannot drown the console or the UI alert feed.
 
-Set ``EAGLEEYE_PICO_PORT`` to override the port (default ``COM7``; the legacy
-``VIGILEYE_PICO_PORT`` is still honoured).
+Set ``VIGILEYE_PICO_PORT`` to override the port (default ``COM7``).
 """
 from __future__ import annotations
 
@@ -17,7 +16,7 @@ try:
 except ImportError:  # pyserial not installed
     serial = None
 
-PICO_PORT = os.environ.get("EAGLEEYE_PICO_PORT") or os.environ.get("VIGILEYE_PICO_PORT", "COM7")
+PICO_PORT = os.environ.get("VIGILEYE_PICO_PORT", "COM7")
 BAUD = 115200
 
 _pico = None
@@ -28,7 +27,7 @@ _announced = False
 def _warn_once(message: str) -> None:
     global _announced
     if not _announced:
-        print(f"[EagleEye] {message}")
+        print(f"[VigilEye] {message}")
         _announced = True
 
 
@@ -42,7 +41,7 @@ def get_pico():
         try:
             _pico = serial.Serial(PICO_PORT, BAUD, timeout=1)
             _status = f"{PICO_PORT} linked"
-            print(f"[EagleEye] Pico linked on {PICO_PORT}")
+            print(f"[VigilEye] Pico linked on {PICO_PORT}")
         except Exception as exc:
             _status = f"{PICO_PORT} offline"
             _warn_once(f"Pico offline: could not open {PICO_PORT} ({exc})")
@@ -59,7 +58,7 @@ def send_to_pico(state: str) -> bool:
         pico.write((state + "\n").encode())
         return True
     except Exception as exc:
-        print(f"[EagleEye] Pico write failed, dropping link: {exc}")
+        print(f"[VigilEye] Pico write failed, dropping link: {exc}")
         try:
             pico.close()
         except Exception:

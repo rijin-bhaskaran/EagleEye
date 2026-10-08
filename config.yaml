@@ -1,5 +1,5 @@
 # =====================================================================
-# EagleEye configuration
+# VigilEye configuration
 # Every threshold in the system lives here. Nothing is hard-coded in the
 # detectors, so you can retune for a new camera / vehicle without
 # touching Python.
@@ -82,7 +82,7 @@ fusion:
       hands: 0.15
 
 temporal:
-  checkpoint: models/eagleeye_lstm.pt
+  checkpoint: models/vigileye_lstm.pt
   window: 30                  # frames per LSTM window (~1 s at 30 fps)
   blend: 0.5                  # hybrid: weight of the learned model
 
@@ -96,7 +96,7 @@ alerts:
 logging:
   dir: logs
   frame_log: true             # per-frame CSV (large; disable on edge devices)
-  db: logs/eagleeye.db        # SQLite event store used by the dashboard
+  db: logs/vigileye.db        # SQLite event store used by the dashboard
   flush_every: 100
 
 calibration:

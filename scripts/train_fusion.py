@@ -27,8 +27,8 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from eagleeye.fusion import FEATURE_NAMES                       # noqa: E402
-from eagleeye.temporal_model import build_model, save_checkpoint  # noqa: E402
+from vigileye.fusion import FEATURE_NAMES                       # noqa: E402
+from vigileye.temporal_model import build_model, save_checkpoint  # noqa: E402
 
 CLASSES = ["ALERT", "DROWSY", "DISTRACTED"]
 
@@ -54,7 +54,7 @@ def make_windows(df: pd.DataFrame, window: int, stride: int):
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--features", default="data/features.csv")
-    ap.add_argument("--out", default="models/eagleeye_lstm.pt")
+    ap.add_argument("--out", default="models/vigileye_lstm.pt")
     ap.add_argument("--window", type=int, default=30)
     ap.add_argument("--stride", type=int, default=5)
     ap.add_argument("--hidden", type=int, default=64)

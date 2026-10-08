@@ -62,7 +62,7 @@ class PhoneDetector:
 
                 self._model = YOLO(str(cfg.model))
             except Exception as exc:  # pragma: no cover - runtime environment
-                print(f"[EagleEye] YOLO unavailable ({exc}); phone detection disabled.")
+                print(f"[VigilEye] YOLO unavailable ({exc}); phone detection disabled.")
                 self.enabled = False
 
     def update(self, frame_bgr: np.ndarray, ts: float) -> Tuple[bool, float, List[Detection]]:
@@ -102,7 +102,7 @@ class PhoneDetector:
 class HandsOnWheelDetector:
     """Counts hands whose centroid falls inside the steering-wheel ROI.
 
-    Supports both MediaPipe APIs (see ``eagleeye.landmarks`` for why):
+    Supports both MediaPipe APIs (see ``vigileye.landmarks`` for why):
     legacy ``mp.solutions.hands`` and the modern Tasks ``HandLandmarker``.
     """
 
@@ -147,7 +147,7 @@ class HandsOnWheelDetector:
             else:
                 raise RuntimeError("no usable MediaPipe backend")
         except Exception as exc:  # pragma: no cover
-            print(f"[EagleEye] MediaPipe Hands unavailable ({exc}); disabled.")
+            print(f"[VigilEye] MediaPipe Hands unavailable ({exc}); disabled.")
             self.enabled = False
             self._hands = None
 

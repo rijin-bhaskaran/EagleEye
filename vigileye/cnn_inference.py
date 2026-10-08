@@ -50,8 +50,8 @@ class CNNDrowsinessPredictor:
             )
         ])
 
-        print("[EagleEye] CNN drowsiness model loaded")
-        print(f"[EagleEye] Class mapping: {self.class_to_idx}")
+        print("[VigilEye] CNN drowsiness model loaded")
+        print(f"[VigilEye] Class mapping: {self.class_to_idx}")
 
     def predict(self, face_bgr):
         """

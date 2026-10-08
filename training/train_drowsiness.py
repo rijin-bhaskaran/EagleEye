@@ -43,7 +43,7 @@ torch.manual_seed(SEED)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 print("=" * 60)
-print("EAGLEEYE DROWSINESS MODEL TRAINING")
+print("VIGILEYE DROWSINESS MODEL TRAINING")
 print("=" * 60)
 print(f"Dataset : {DATASET_DIR}")
 print(f"Device  : {device}")

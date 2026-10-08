@@ -27,14 +27,14 @@ _HERE = Path(__file__).parent
 _INDEX = _HERE / "index.html"
 _ASSETS = _HERE / "assets"
 _ASSET_TYPES = {".png": "image/png", ".svg": "image/svg+xml", ".ico": "image/x-icon"}
-_BOUNDARY = "eagleeyeframe"
+_BOUNDARY = "vigileyeframe"
 
 _COMMANDS = {"recalibrate", "mute", "unmute", "snapshot", "stop"}
 
 
 class _Handler(BaseHTTPRequestHandler):
     hub: TelemetryHub = None            # type: ignore[assignment]
-    db_path: str = "logs/eagleeye.db"
+    db_path: str = "logs/vigileye.db"
     protocol_version = "HTTP/1.1"
     # Send small writes immediately; Nagle + delayed ACK can hold an MJPEG
     # frame back for tens of milliseconds.
@@ -153,9 +153,9 @@ class WebUI:
     """Owns the server thread and its lifetime."""
 
     def __init__(self, hub: TelemetryHub, host: str = "127.0.0.1", port: int = 8000,
-                 db_path: str = "logs/eagleeye.db") -> None:
+                 db_path: str = "logs/vigileye.db") -> None:
         self.hub = hub
-        handler = type("EagleEyeHandler", (_Handler,), {"hub": hub, "db_path": db_path})
+        handler = type("VigilEyeHandler", (_Handler,), {"hub": hub, "db_path": db_path})
 
         # Port already taken (a previous run still closing) -> try the next few.
         last: Optional[OSError] = None
