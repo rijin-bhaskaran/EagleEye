@@ -1,25 +1,25 @@
 {
 	"folders": [
 		{
-			"path": "dashboard"
+			"path": "../files/vigileye/vigileye/dashboard"
 		},
 		{
-			"path": "data"
+			"path": "../files/vigileye/vigileye/data"
 		},
 		{
-			"path": "logs"
+			"path": "../files/vigileye/vigileye/logs"
 		},
 		{
-			"path": "models"
+			"path": "../files/vigileye/vigileye/models"
 		},
 		{
-			"path": "scripts"
+			"path": "../files/vigileye/vigileye/scripts"
 		},
 		{
-			"path": "tests"
+			"path": "../files/vigileye/vigileye/tests"
 		},
 		{
-			"path": "eagleeye"
+			"path": "../files/vigileye/vigileye/vigileye"
 		}
 	]
 }
