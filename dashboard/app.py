@@ -3,7 +3,7 @@
 
     streamlit run dashboard/app.py
 
-Reads the SQLite event store written by ``vigileye.logger.SessionLogger``
+Reads the SQLite event store written by ``eagleeye.logger.SessionLogger``
 and turns it into the fleet-level view described in the abstract: which
 drivers are accumulating fatigue events, at what hours, and on which
 trips. This is the part that makes the system valuable to an operator
@@ -18,11 +18,11 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-LOGO = Path(__file__).resolve().parent.parent / "vigileye" / "webui" / "assets" / "ettiksoft-logo.png"
+LOGO = Path(__file__).resolve().parent.parent / "eagleeye" / "webui" / "assets" / "ettiksoft-logo.png"
 
 st.set_page_config(page_title="EagleEye Fleet Dashboard", page_icon="👁", layout="wide")
 
-DB_DEFAULT = "logs/vigileye.db"
+DB_DEFAULT = "logs/eagleeye.db"
 
 
 @st.cache_data(ttl=15)

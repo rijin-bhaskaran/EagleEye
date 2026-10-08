@@ -32,9 +32,9 @@ import cv2
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from vigileye.config import load_config           # noqa: E402
-from vigileye.fusion import FEATURE_NAMES         # noqa: E402
-from vigileye.pipeline import VigilEyePipeline    # noqa: E402
+from eagleeye.config import load_config           # noqa: E402
+from eagleeye.fusion import FEATURE_NAMES         # noqa: E402
+from eagleeye.pipeline import EagleEyePipeline    # noqa: E402
 
 LABELS = {"alert": 0, "drowsy": 1, "distracted": 2}
 VIDEO_EXT = {".avi", ".mp4", ".mov", ".mkv", ".MP4", ".AVI"}
@@ -85,7 +85,7 @@ def main() -> None:
         for vi, (path, label) in enumerate(videos, 1):
             # A fresh pipeline per video resets every rolling window, so
             # PERCLOS from clip N never bleeds into clip N+1.
-            pipeline = VigilEyePipeline(
+            pipeline = EagleEyePipeline(
                 cfg, calibrate=False, use_objects=not args.no_objects
             )
             cap = cv2.VideoCapture(str(path))

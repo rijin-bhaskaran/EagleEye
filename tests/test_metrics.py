@@ -12,9 +12,9 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from vigileye.config import load_config
-from vigileye.fusion import FEATURE_NAMES, DriverState, RuleFusion, Signals
-from vigileye.metrics import (
+from eagleeye.config import load_config
+from eagleeye.fusion import FEATURE_NAMES, DriverState, RuleFusion, Signals
+from eagleeye.metrics import (
     BlinkDetector,
     PerclosTracker,
     RollingRatio,

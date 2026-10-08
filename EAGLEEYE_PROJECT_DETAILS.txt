@@ -1,10 +1,10 @@
 ================================================================================
-VIGILEYE - COMPLETE PROJECT DOCUMENTATION
+EAGLEEYE - COMPLETE PROJECT DOCUMENTATION
 Real-time multimodal driver drowsiness, fatigue and distraction detection
 Smart India Hackathon 2026
 ================================================================================
 Generated: 7 September 2026
-Repository root: d:\My Projects\Vigileye-main
+Repository root: d:\My Projects\Eagleeye-main
 Python: 3.12.10 (Windows, CPU only - torch.cuda.is_available() == False)
 
 CONTENTS
@@ -36,7 +36,7 @@ CONTENTS
 1. WHAT THE SYSTEM IS
 ================================================================================
 
-VigilEye is a camera-only driver monitoring system. A single driver-facing
+EagleEye is a camera-only driver monitoring system. A single driver-facing
 camera feeds a perception pipeline that measures eye closure, yawning, head
 pose, gaze direction, phone presence and hands-on-wheel, then fuses those cues
 into one stable driver state:
@@ -89,7 +89,7 @@ NOT YET DONE
     been trained, so the CNN cue contributes nothing. The pipeline now loads it
     optionally and degrades to rules only (see section 14). The dataset and the
     training script are both present and ready to run.
-  - models/vigileye_lstm.pt does NOT exist. The v2 temporal LSTM is untrained,
+  - models/eagleeye_lstm.pt does NOT exist. The v2 temporal LSTM is untrained,
     so --mode temporal and --mode hybrid silently fall back to rules.
   - No Pico firmware is stored in this repository. The host half of the link is
     implemented and working; the device half is specified with a complete
@@ -144,8 +144,8 @@ Other entry points:
     streamlit run dashboard/app.py            fleet analytics over SQLite
     python training/train_drowsiness.py       train the MobileNetV3 CNN
     python test_cnn_live.py                   CNN-only live test window
-    python -m vigileye.landmarks              print the MediaPipe backend
-    python -m vigileye.landmarks --download    pre-fetch Tasks model bundles
+    python -m eagleeye.landmarks              print the MediaPipe backend
+    python -m eagleeye.landmarks --download    pre-fetch Tasks model bundles
     pytest -q                                 run the unit tests
 
     python scripts/collect_features.py --videos data/videos --out data/features.csv
@@ -164,7 +164,7 @@ Other entry points:
    VideoStream (threaded, drops stale frames)
         |
         v
-  VigilEyePipeline.process(frame, ts)
+  EagleEyePipeline.process(frame, ts)
         |
         +-- FaceMeshDetector ........ 478 landmarks (MediaPipe, both APIs)
         |     +-- both_eyes_ear ..... EAR -> BlinkDetector -> blinks,
@@ -213,9 +213,9 @@ feature extraction produce training features identical to inference features.
   test_cnn_live.py              standalone CNN test window
   pytest.ini                    restricts test discovery to tests/
   calibration.json              cached per-driver baseline (generated)
-  VIGILEYE_PROJECT_DETAILS.txt  this document
+  EAGLEEYE_PROJECT_DETAILS.txt  this document
 
-  vigileye/
+  eagleeye/
     __init__.py
     config.py                   YAML + defaults, dot-access Cfg dict
     landmarks.py                MediaPipe wrapper, landmark indices, 3-D model
@@ -250,14 +250,14 @@ feature extraction produce training features identical to inference features.
     face_landmarker.task        MediaPipe Tasks face bundle (3.7 MB, present)
     hand_landmarker.task        MediaPipe Tasks hand bundle (auto-downloaded)
     drowsiness_model.pth        MISSING - CNN not trained yet
-    vigileye_lstm.pt            MISSING - temporal model not trained yet
+    eagleeye_lstm.pt            MISSING - temporal model not trained yet
 
   data/raw/Driver Drowsiness Dataset (DDD)/
     Drowsy/                     22,348 images
     Non Drowsy/                 19,445 images
 
   logs/
-    vigileye.db                 SQLite event store
+    eagleeye.db                 SQLite event store
     session_<id>.csv            per-frame feature log
 
 
@@ -380,7 +380,7 @@ pipeline.py
 7. THE SIGNALS RECORD
 ================================================================================
 
-One Signals dataclass is produced per frame (vigileye/fusion.py):
+One Signals dataclass is produced per frame (eagleeye/fusion.py):
 
   ts                    frame timestamp (seconds)
   face_found            was a face detected
@@ -557,9 +557,9 @@ objects.hands: enabled true, max_num_hands 2, min_detection_confidence 0.5,
              hands_off_min_s 2.0
 fusion:      mode rule, drowsy_threshold 0.45, distract_threshold 0.45,
              confirm_frames 8, release_frames 20, min_state_s 1.5, weights
-temporal:    checkpoint models/vigileye_lstm.pt, window 30, blend 0.5
+temporal:    checkpoint models/eagleeye_lstm.pt, window 30, blend 0.5
 alerts:      enabled true, cooldown_s 5, escalate_s 8, volume 0.35, tts false
-logging:     dir logs, frame_log true, db logs/vigileye.db, flush_every 100
+logging:     dir logs, frame_log true, db logs/eagleeye.db, flush_every 100
 calibration: duration_s 10, file calibration.json
 
 Tuning table (from the README):
@@ -586,9 +586,9 @@ Flask or FastAPI, because the UI must come up automatically on an edge device
 without adding a web framework to the install.
 
 Files:
-  vigileye/webui/hub.py       TelemetryHub - shared state
-  vigileye/webui/server.py    WebUI - HTTP server and routes
-  vigileye/webui/index.html   the page (Tailwind CDN + vanilla JS, no build)
+  eagleeye/webui/hub.py       TelemetryHub - shared state
+  eagleeye/webui/server.py    WebUI - HTTP server and routes
+  eagleeye/webui/index.html   the page (Tailwind CDN + vanilla JS, no build)
 
 TelemetryHub
   The pipeline thread pushes frames and signals in; HTTP handler threads read
@@ -632,7 +632,7 @@ Views (sidebar, or keys 1-5)
                     phone confidence, hands on wheel, CNN probability and
                     current closure duration.
   4 Incident log    every alert this session in a searchable table.
-  5 Fleet board     all recorded sessions from logs/vigileye.db with alert and
+  5 Fleet board     all recorded sessions from logs/eagleeye.db with alert and
                     critical counts and peak drowsy score.
 
 Controls in the header
@@ -668,7 +668,7 @@ and for offline threshold tuning. Columns:
 Set logging.frame_log: false in production. Per-frame CSV is for training data
 collection, not for shipping.
 
-SQLite event store (logs/vigileye.db) - only state transitions and alerts, so
+SQLite event store (logs/eagleeye.db) - only state transitions and alerts, so
 the dashboard stays fast after months of driving.
 
   sessions(session_id PK, driver_id, vehicle_id, started_at, ended_at,
@@ -690,7 +690,7 @@ Role
   A learned visual cue that supplements the interpretable geometric ones. It
   contributes 20% of the drowsiness score when available (section 8).
 
-Model (vigileye/cnn_inference.py)
+Model (eagleeye/cnn_inference.py)
   MobileNetV3-Small, final classifier layer replaced with a 2-class Linear
   head. Input is the face crop taken from the MediaPipe landmark bounding box
   expanded by 30 px, converted BGR -> RGB -> PIL, resized to 224x224,
@@ -705,7 +705,7 @@ Checkpoint format
 
 Current behaviour without the checkpoint
   pipeline.py wraps construction in try/except, prints
-    [VigilEye] CNN drowsiness model disabled: ... No such file or directory
+    [EagleEye] CNN drowsiness model disabled: ... No such file or directory
   and sets self.cnn = None. Prediction is skipped, cnn_available stays False,
   and the CNN blend is bypassed. Before this fix, python run.py crashed on
   startup with FileNotFoundError before the camera ever opened.
@@ -746,7 +746,7 @@ Purpose
   Learn the temporal signature of fatigue from the same features the rules use,
   rather than replacing them.
 
-Model (vigileye/temporal_model.py)
+Model (eagleeye/temporal_model.py)
   Input  (batch, window, n_features), window 30 frames (~1 s at 30 fps)
   LSTM or GRU, hidden 64, 1 layer, LayerNorm, dropout 0.3, then a
   Linear(64,32) -> ReLU -> Linear(32,3) head.
@@ -765,7 +765,7 @@ Model (vigileye/temporal_model.py)
 Pipeline
   Step 1  python scripts/collect_features.py --videos data/videos
               --out data/features.csv --stride 2 --no-objects
-          Runs the exact same VigilEyePipeline the live system uses, which is
+          Runs the exact same EagleEyePipeline the live system uses, which is
           what guarantees training features match inference features.
           Videos must be organised so the parent directory is the label:
               data/videos/alert/ , drowsy/ , distracted/
@@ -801,7 +801,7 @@ Evaluation (scripts/evaluate.py)
 
     streamlit run dashboard/app.py
 
-Reads logs/vigileye.db (cached 15 s) and shows: session and frame totals,
+Reads logs/eagleeye.db (cached 15 s) and shows: session and frame totals,
 drowsy / distraction / critical alert counts, alerts by type, alerts by hour of
 day with the peak risk hour called out, risk scores over time, a driver risk
 ranking normalised per hour driven, the session table and a raw alert log.
@@ -817,15 +817,15 @@ same database.
 
 17.1 ROLE IN THE SYSTEM
 -----------------------
-The Pico is an OPTIONAL external annunciator. VigilEye already alerts through
+The Pico is an OPTIONAL external annunciator. EagleEye already alerts through
 the laptop speakers and the screen; the Pico exists so the warning can leave
 the computer and drive real hardware in the vehicle - LEDs on the dash, a
 piezo buzzer, a relay, a seat vibration motor - independently of whether
 anyone is looking at the laptop. It is an accessory, never a dependency: if
-pyserial is missing or no board is attached, VigilEye keeps running and simply
+pyserial is missing or no board is attached, EagleEye keeps running and simply
 reports the link as offline.
 
-17.2 HOST SIDE (implemented: vigileye/pico_alert.py)
+17.2 HOST SIDE (implemented: eagleeye/pico_alert.py)
 ----------------------------------------------------
 Public API:
 
@@ -841,10 +841,10 @@ Public API:
 
 Configuration:
 
-  Port  environment variable VIGILEYE_PICO_PORT, default "COM7"
-          Windows:  set VIGILEYE_PICO_PORT=COM5
-          Linux:    export VIGILEYE_PICO_PORT=/dev/ttyACM0
-          macOS:    export VIGILEYE_PICO_PORT=/dev/tty.usbmodem0001
+  Port  environment variable EAGLEEYE_PICO_PORT, default "COM7"
+          Windows:  set EAGLEEYE_PICO_PORT=COM5
+          Linux:    export EAGLEEYE_PICO_PORT=/dev/ttyACM0
+          macOS:    export EAGLEEYE_PICO_PORT=/dev/tty.usbmodem0001
   Baud  115200, 8N1, 1 s timeout. Over USB CDC the baud rate is nominal and
         ignored by the hardware, but it must still be supplied.
 
@@ -936,7 +936,7 @@ LED cathodes (short leg) go to the ground rail through the resistors.
 Save the following as main.py on the Pico so it runs automatically at boot.
 
 --------------------------------- main.py --------------------------------------
-"""VigilEye Pico annunciator.
+"""EagleEye Pico annunciator.
 
 Reads driver-state lines from the host over USB serial and drives three LEDs
 and a piezo buzzer. One line per state change, terminated by newline:
@@ -1081,15 +1081,15 @@ when serial data arrives.
        python -c "import serial.tools.list_ports as p; print([(x.device, x.description) for x in p.comports()])"
    Linux/macOS: ls /dev/ttyACM* or ls /dev/tty.usbmodem*
 
-4. Point VigilEye at it.
-   Windows PowerShell:   $env:VIGILEYE_PICO_PORT = "COM5"
-   Windows cmd:          set VIGILEYE_PICO_PORT=COM5
-   Linux/macOS:          export VIGILEYE_PICO_PORT=/dev/ttyACM0
+4. Point EagleEye at it.
+   Windows PowerShell:   $env:EAGLEEYE_PICO_PORT = "COM5"
+   Windows cmd:          set EAGLEEYE_PICO_PORT=COM5
+   Linux/macOS:          export EAGLEEYE_PICO_PORT=/dev/ttyACM0
    Then run python run.py. On success the console prints
-       [VigilEye] Pico linked on COM5
+       [EagleEye] Pico linked on COM5
    and the UI footer shows "COM5 linked".
 
-5. IMPORTANT: close Thonny (or any serial monitor) before running VigilEye.
+5. IMPORTANT: close Thonny (or any serial monitor) before running EagleEye.
    A USB CDC port can only be held by one process at a time. Leaving Thonny
    connected is the most common cause of a port-busy failure.
 
@@ -1101,11 +1101,11 @@ The host side can be exercised with no hardware:
     "Pico offline: could not open COM7 (...)" exactly once and continues
     normally. This is the currently verified behaviour on this machine.
   - Drive it manually from a Python shell:
-        from vigileye.pico_alert import send_to_pico, pico_status
+        from eagleeye.pico_alert import send_to_pico, pico_status
         send_to_pico("DROWSY"); print(pico_status())
   - For a real loopback test, create a virtual serial pair with com0com on
     Windows (or socat on Linux: socat -d -d pty,raw,echo=0 pty,raw,echo=0),
-    point VIGILEYE_PICO_PORT at one end, and read the other end with a script
+    point EAGLEEYE_PICO_PORT at one end, and read the other end with a script
     to watch the state strings arrive.
   - With the board attached but the firmware not yet installed, a plain
     MicroPython REPL will still accept the bytes harmlessly.
@@ -1198,9 +1198,9 @@ From requirements.txt:
   (commented) simpleaudio, pyttsx3
 
 Installed in this environment but NOT declared in requirements.txt - add them:
-  torchvision 0.29.0      required by vigileye/cnn_inference.py and
+  torchvision 0.29.0      required by eagleeye/cnn_inference.py and
                           training/train_drowsiness.py
-  pyserial 3.5            required by vigileye/pico_alert.py
+  pyserial 3.5            required by eagleeye/pico_alert.py
   pillow                  required by cnn_inference.py (PIL.Image)
   tqdm                    required by training/train_drowsiness.py
 
@@ -1209,8 +1209,8 @@ library. The page itself loads Tailwind and fonts from a CDN, so it needs
 internet for styling only.
 
 MediaPipe backend check:
-  python -m vigileye.landmarks              prints solutions | tasks | none
-  python -m vigileye.landmarks --download   pre-fetch the Tasks bundles
+  python -m eagleeye.landmarks              prints solutions | tasks | none
+  python -m eagleeye.landmarks --download   pre-fetch the Tasks bundles
 Fetch bundles ahead of time - do not rely on venue wifi during a demo.
 
 
@@ -1294,8 +1294,8 @@ FileNotFoundError: models/drowsiness_model.pth
     numpy 2.x is installed. pip install "numpy>=1.24,<2.0".
 
 AttributeError: module 'mediapipe' has no attribute 'solutions'
-    You have a 0.10.2x release. VigilEye handles this automatically via the
-    Tasks backend; run python -m vigileye.landmarks --download once.
+    You have a 0.10.2x release. EagleEye handles this automatically via the
+    Tasks backend; run python -m eagleeye.landmarks --download once.
 
 State flickers between ALERT and DROWSY
     Calibration failed. Press c (or the Calibrate button) and hold still,

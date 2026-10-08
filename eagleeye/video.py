@@ -37,6 +37,10 @@ class VideoStream:
             self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
             self.cap.set(cv2.CAP_PROP_FPS, fps)
             self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+            # A webcam left in manual exposure (by another app or an earlier
+            # session) gives a near-black image and, with long exposures, a
+            # lower frame rate. 0.75 = "auto" on DirectShow, 3 on V4L2.
+            self.cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 3 if sys.platform.startswith("linux") else 0.75)
 
         self.src_fps = self.cap.get(cv2.CAP_PROP_FPS) or fps
         self.frame_index = 0

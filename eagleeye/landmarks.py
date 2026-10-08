@@ -23,7 +23,7 @@ all index constants below are valid either way.
 
 The Tasks backend needs a model bundle downloaded once::
 
-    python -m vigileye.landmarks --download
+    python -m eagleeye.landmarks --download
 
 Index constants use MediaPipe's canonical 478-point topology. Note that
 LEFT/RIGHT naming is *image-space*: LEFT_EYE is the eye appearing on the
@@ -116,9 +116,9 @@ def ensure_model(url: str, dest: Path) -> Path:
     """Download a Tasks model bundle once, if missing."""
     dest.parent.mkdir(parents=True, exist_ok=True)
     if not dest.exists():
-        print(f"[VigilEye] downloading {dest.name} ...")
+        print(f"[EagleEye] downloading {dest.name} ...")
         urllib.request.urlretrieve(url, dest)
-        print(f"[VigilEye] saved -> {dest}")
+        print(f"[EagleEye] saved -> {dest}")
     return dest
 
 

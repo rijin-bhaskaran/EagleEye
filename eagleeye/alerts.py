@@ -144,7 +144,7 @@ class AlertManager:
                     self._tts.say(event.message)
                     self._tts.runAndWait()
             except Exception as exc:  # pragma: no cover
-                print(f"[VigilEye] alert playback failed: {exc}")
+                print(f"[EagleEye] alert playback failed: {exc}")
 
         threading.Thread(target=_run, daemon=True).start()
 

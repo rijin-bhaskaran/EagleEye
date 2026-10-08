@@ -73,7 +73,7 @@ def _trace(values: Sequence[float], w: float = 320.0, h: float = 140.0) -> str:
 class TelemetryHub:
     """Thread-safe latest-frame + latest-telemetry store, plus a command queue."""
 
-    def __init__(self, driver_id: str, vehicle_id: str, jpeg_quality: int = 72) -> None:
+    def __init__(self, driver_id: str, vehicle_id: str, jpeg_quality: int = 90) -> None:
         self.driver_id = driver_id
         self.vehicle_id = vehicle_id
         self.session_id = "-"

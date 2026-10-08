@@ -1,25 +1,25 @@
 {
 	"folders": [
 		{
-			"path": "../files/vigileye/vigileye/dashboard"
+			"path": "../files/eagleeye/eagleeye/dashboard"
 		},
 		{
-			"path": "../files/vigileye/vigileye/data"
+			"path": "../files/eagleeye/eagleeye/data"
 		},
 		{
-			"path": "../files/vigileye/vigileye/logs"
+			"path": "../files/eagleeye/eagleeye/logs"
 		},
 		{
-			"path": "../files/vigileye/vigileye/models"
+			"path": "../files/eagleeye/eagleeye/models"
 		},
 		{
-			"path": "../files/vigileye/vigileye/scripts"
+			"path": "../files/eagleeye/eagleeye/scripts"
 		},
 		{
-			"path": "../files/vigileye/vigileye/tests"
+			"path": "../files/eagleeye/eagleeye/tests"
 		},
 		{
-			"path": "../files/vigileye/vigileye/vigileye"
+			"path": "../files/eagleeye/eagleeye/eagleeye"
 		}
 	]
 }
