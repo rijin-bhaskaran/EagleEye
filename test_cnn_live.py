@@ -1,5 +1,5 @@
 import cv2
-from vigileye.cnn_inference import CNNDrowsinessPredictor
+from eagleeye.cnn_inference import CNNDrowsinessPredictor
 
 cnn = CNNDrowsinessPredictor("models/drowsiness_model.pth")
 
@@ -62,7 +62,7 @@ while True:
         2,
     )
 
-    cv2.imshow("VigilEye CNN Test", frame)
+    cv2.imshow("EagleEye CNN Test", frame)
 
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break

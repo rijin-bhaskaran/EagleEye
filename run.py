@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""VigilEye live runner.
+"""EagleEye live runner.
 
     python run.py                          # webcam + browser cockpit
     python run.py --source data/test.mp4   # run against a video file
@@ -26,25 +26,25 @@ from pathlib import Path
 
 import cv2
 
-from vigileye.alerts import AlertManager
-from vigileye.config import load_config
-from vigileye.fusion import DriverState
-from vigileye.logger import SessionLogger
-from vigileye.pipeline import VigilEyePipeline
-from vigileye.video import VideoStream
-from vigileye.pico_alert import close_pico, pico_status, send_to_pico
-from vigileye.visualize import (
+from eagleeye.alerts import AlertManager
+from eagleeye.config import load_config
+from eagleeye.fusion import DriverState
+from eagleeye.logger import SessionLogger
+from eagleeye.pipeline import EagleEyePipeline
+from eagleeye.video import VideoStream
+from eagleeye.pico_alert import close_pico, pico_status, send_to_pico
+from eagleeye.visualize import (
     draw_detections,
     draw_hud,
     draw_landmarks,
     draw_pose_axis,
     draw_wheel_roi,
 )
-from vigileye.webui import TelemetryHub, WebUI
+from eagleeye.webui import TelemetryHub, WebUI
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="VigilEye driver monitoring")
+    p = argparse.ArgumentParser(description="EagleEye driver monitoring")
     p.add_argument("--config", default="config.yaml")
     p.add_argument("--source", default=None, help="camera index or video path")
     p.add_argument("--mode", choices=["rule", "temporal", "hybrid"], default=None)
@@ -145,7 +145,7 @@ def main() -> None:
         cfg.camera.source, cfg.camera.width, cfg.camera.height,
         cfg.camera.fps, cfg.camera.flip,
     )
-    pipeline = VigilEyePipeline(
+    pipeline = EagleEyePipeline(
         cfg, use_objects=not args.no_objects, async_objects=not stream.is_file
     )
     alerts = AlertManager(cfg.alerts)
@@ -162,7 +162,7 @@ def main() -> None:
             hub.session_id = logger.session_id
         webui = WebUI(hub, host=args.ui_host, port=args.ui_port, db_path=str(cfg.logging.db))
         webui.start()
-        print(f"[VigilEye] command deck: {webui.url}")
+        print(f"[EagleEye] command deck: {webui.url}")
         if not args.headless and not args.no_browser:
             webui.open_browser()
 
@@ -192,8 +192,8 @@ def main() -> None:
         renderer.start()
 
     if logger:
-        print(f"[VigilEye] session {logger.session_id} started")
-    print("[VigilEye] running - press 'q' in the window or Stop in the browser to quit")
+        print(f"[EagleEye] session {logger.session_id} started")
+    print("[EagleEye] running - press 'q' in the window or Stop in the browser to quit")
 
     try:
         while running:
@@ -205,9 +205,9 @@ def main() -> None:
                 # UI alive and retry rather than shutting everything down.
                 if no_frame_since is None:
                     no_frame_since = time.time()
-                    print("[VigilEye] waiting for the camera to deliver frames...")
+                    print("[EagleEye] waiting for the camera to deliver frames...")
                 elif time.time() - no_frame_since > 15.0:
-                    print("[VigilEye] ERROR: no frames from the camera for 15s. Close any "
+                    print("[EagleEye] ERROR: no frames from the camera for 15s. Close any "
                           "other app using it (Teams/Zoom/browser), check Windows camera "
                           "privacy settings, or try camera.source: 1 in config.yaml.")
                     break
@@ -238,7 +238,7 @@ def main() -> None:
             if not warned_low_fps and frames == 90 and not stream.is_file:
                 video_fps = renderer.fps if renderer else stream.capture_fps
                 if 0 < video_fps < 28:      # 28 leaves room for 30 FPS jitter
-                    print(f"[VigilEye] WARNING: video is running at {video_fps:.0f} FPS "
+                    print(f"[EagleEye] WARNING: video is running at {video_fps:.0f} FPS "
                           f"(camera delivers {stream.capture_fps:.0f}). Low light makes webcams "
                           "lower their frame rate - add light or disable auto-exposure.")
                 warned_low_fps = True
@@ -261,14 +261,14 @@ def main() -> None:
                 for action in hub.drain_commands():
                     if action == "recalibrate":
                         pipeline.recalibrate()
-                        print("[VigilEye] recalibrating...")
+                        print("[EagleEye] recalibrating...")
                     elif action in ("mute", "unmute"):
                         muted = action == "mute"
-                        print(f"[VigilEye] alerts {'muted' if muted else 'unmuted'}")
+                        print(f"[EagleEye] alerts {'muted' if muted else 'unmuted'}")
                     elif action == "snapshot":
                         want_snapshot = True
                     elif action == "stop":
-                        print("[VigilEye] stop requested from the browser")
+                        print("[EagleEye] stop requested from the browser")
                         running = False
 
             calib_progress = (
@@ -312,7 +312,7 @@ def main() -> None:
                 if want_snapshot:
                     name = f"snapshot_{int(time.time())}.png"
                     cv2.imwrite(name, canvas)
-                    print(f"[VigilEye] saved {name}")
+                    print(f"[EagleEye] saved {name}")
                     want_snapshot = False
 
                 if args.record:
@@ -324,23 +324,23 @@ def main() -> None:
                     writer.write(canvas)
 
                 if show_window:
-                    cv2.imshow("VigilEye", canvas)
+                    cv2.imshow("EagleEye", canvas)
                     key = cv2.waitKey(1) & 0xFF
                     if key == ord("q"):
                         break
                     if key == ord("c"):
                         pipeline.recalibrate()
-                        print("[VigilEye] recalibrating...")
+                        print("[EagleEye] recalibrating...")
                     if key == ord("m"):
                         muted = not muted
-                        print(f"[VigilEye] alerts {'muted' if muted else 'unmuted'}")
+                        print(f"[EagleEye] alerts {'muted' if muted else 'unmuted'}")
                     if key == ord("h"):
                         show_hud = not show_hud
                     if key == ord("s"):
                         want_snapshot = True
 
     except KeyboardInterrupt:
-        print("\n[VigilEye] interrupted")
+        print("\n[EagleEye] interrupted")
     finally:
         elapsed = max(time.time() - t_start, 1e-6)
         mean_fps = frames / elapsed
@@ -358,7 +358,7 @@ def main() -> None:
         if webui is not None:
             webui.shutdown()
         cv2.destroyAllWindows()
-        print(f"[VigilEye] {frames} frames in {elapsed:.1f}s ({mean_fps:.1f} FPS)")
+        print(f"[EagleEye] {frames} frames in {elapsed:.1f}s ({mean_fps:.1f} FPS)")
 
 
 if __name__ == "__main__":

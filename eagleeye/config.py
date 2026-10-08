@@ -82,7 +82,7 @@ DEFAULTS: Dict[str, Any] = {
             "distract": {"phone": 0.35, "gaze": 0.25, "head": 0.25, "hands": 0.15},
         },
     },
-    "temporal": {"checkpoint": "models/vigileye_lstm.pt", "window": 30, "blend": 0.5},
+    "temporal": {"checkpoint": "models/eagleeye_lstm.pt", "window": 30, "blend": 0.5},
     "alerts": {
         "enabled": True,
         "cooldown_s": 5.0,
@@ -93,7 +93,7 @@ DEFAULTS: Dict[str, Any] = {
     "logging": {
         "dir": "logs",
         "frame_log": True,
-        "db": "logs/vigileye.db",
+        "db": "logs/eagleeye.db",
         "flush_every": 100,
     },
     "calibration": {"duration_s": 10.0, "file": "calibration.json"},

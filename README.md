@@ -1,8 +1,8 @@
-# VigilEye
+# EagleEye
 
 ### Real-Time Driver Drowsiness, Fatigue and Distraction Detection
 
-VigilEye is a camera-based driver monitoring system that analyses facial landmarks, eye closure, yawning, head pose, gaze direction, phone usage, and hands-on-wheel behaviour to detect potential driver drowsiness and distraction.
+EagleEye is a camera-based driver monitoring system that analyses facial landmarks, eye closure, yawning, head pose, gaze direction, phone usage, and hands-on-wheel behaviour to detect potential driver drowsiness and distraction.
 
 The system combines real-time computer vision, rule-based sensor fusion, temporal analysis, audio alerts, event logging, and a browser-based monitoring dashboard.
 
@@ -57,7 +57,7 @@ The project is designed for driver safety applications and edge-device deploymen
 
 ## Driver States
 
-VigilEye classifies the current driver state into four categories:
+EagleEye classifies the current driver state into four categories:
 
 | State          | Description                                                   |
 | -------------- | ------------------------------------------------------------- |
@@ -73,7 +73,7 @@ Drowsiness and distraction are evaluated separately because they require differe
 ```mermaid
 flowchart TB
     A[Camera / Video File] --> B[VideoStream]
-    B --> C[VigilEye Pipeline]
+    B --> C[EagleEye Pipeline]
 
     C --> D[Face Mesh Detection]
     C --> E[Phone Detection]
@@ -186,7 +186,7 @@ flowchart LR
 
 ## Signal Processing
 
-VigilEye extracts multiple behavioural signals from each frame.
+EagleEye extracts multiple behavioural signals from each frame.
 
 | Signal                    | Purpose                                               |
 | ------------------------- | ----------------------------------------------------- |
@@ -235,7 +235,7 @@ The system uses **hysteresis** to reduce unstable state changes. The documented 
 
 ## Calibration
 
-VigilEye uses driver-specific calibration instead of relying only on fixed thresholds.
+EagleEye uses driver-specific calibration instead of relying only on fixed thresholds.
 
 ```mermaid
 flowchart TD
@@ -254,7 +254,7 @@ The browser-based **Command Deck** provides a live monitoring interface.
 
 ```mermaid
 flowchart LR
-    A[VigilEye Pipeline] --> B[TelemetryHub]
+    A[EagleEye Pipeline] --> B[TelemetryHub]
     B --> C[Web Server]
 
     C --> D[Live MJPEG Video]
@@ -280,7 +280,7 @@ The Raspberry Pi Pico is an **optional external alerting device**.
 
 ```mermaid
 flowchart LR
-    A[VigilEye Host] --> B[Serial Communication]
+    A[EagleEye Host] --> B[Serial Communication]
     B --> C[Raspberry Pi Pico]
     C --> D[External Alert Hardware]
 ```
@@ -316,7 +316,7 @@ The documented dependency set includes OpenCV, MediaPipe, Ultralytics, PyTorch, 
 ## Project Structure
 
 ```text
-VigilEye/
+EagleEye/
 │
 ├── run.py
 ├── config.yaml
@@ -324,7 +324,7 @@ VigilEye/
 ├── README.md
 ├── test_cnn_live.py
 │
-├── vigileye/
+├── eagleeye/
 │   ├── __init__.py
 │   ├── config.py
 │   ├── landmarks.py
@@ -385,8 +385,8 @@ The repository layout above is based on the documented project structure.
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/VigilEye.git
-cd VigilEye
+git clone https://github.com/<your-username>/EagleEye.git
+cd EagleEye
 ```
 
 ### Create a Virtual Environment
@@ -431,7 +431,7 @@ The Streamlit dashboard reads the SQLite event database and provides historical 
 
 ## Configuration
 
-VigilEye uses `config.yaml` for tunable thresholds and runtime settings.
+EagleEye uses `config.yaml` for tunable thresholds and runtime settings.
 
 Example configuration categories include:
 
@@ -468,7 +468,7 @@ alerts:
 logging:
   dir: logs
   frame_log: true
-  db: logs/vigileye.db
+  db: logs/eagleeye.db
 ```
 
 The complete configuration reference is maintained in `config.yaml`.
@@ -512,7 +512,7 @@ The documented temporal model is designed to learn fatigue patterns from sequent
 
 ## Logging and Analytics
 
-VigilEye stores:
+EagleEye stores:
 
 * Frame-level measurements in CSV.
 * Driver-state events in SQLite.
@@ -591,7 +591,7 @@ Performance depends on the hardware, camera resolution, and enabled detection mo
 
 ## Disclaimer
 
-VigilEye is a research and development project intended for educational and experimental purposes. It is not a certified automotive safety system and should not be relied upon as the sole means of preventing accidents.
+EagleEye is a research and development project intended for educational and experimental purposes. It is not a certified automotive safety system and should not be relied upon as the sole means of preventing accidents.
 
 Drivers must remain responsible for safe vehicle operation.
 

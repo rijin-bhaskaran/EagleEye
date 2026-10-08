@@ -1,4 +1,4 @@
-"""VigilEye - real-time multimodal driver drowsiness & distraction detection."""
+"""EagleEye - real-time multimodal driver drowsiness & distraction detection."""
 
 __version__ = "1.0.0"
 

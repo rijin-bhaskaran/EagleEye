@@ -89,7 +89,7 @@ class TemporalFusion:
 
         ckpt_path = Path(checkpoint)
         if not ckpt_path.exists():
-            print(f"[VigilEye] No temporal checkpoint at {ckpt_path}; using rules only.")
+            print(f"[EagleEye] No temporal checkpoint at {ckpt_path}; using rules only.")
             return
 
         ckpt = torch.load(ckpt_path, map_location=self.device)
