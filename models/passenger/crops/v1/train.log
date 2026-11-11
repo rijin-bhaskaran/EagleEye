@@ -1,0 +1,35 @@
+[pretrain] epoch 1/8 loss 0.5559 val_macro_f1 0.7492 168s
+[pretrain] epoch 2/8 loss 0.4632 val_macro_f1 0.8141 183s
+[pretrain] epoch 3/8 loss 0.4179 val_macro_f1 0.8278 155s
+[pretrain] epoch 4/8 loss 0.3840 val_macro_f1 0.8383 175s
+[pretrain] epoch 5/8 loss 0.3406 val_macro_f1 0.8400 149s
+[pretrain] epoch 6/8 loss 0.3054 val_macro_f1 0.8675 116s
+[pretrain] epoch 7/8 loss 0.2743 val_macro_f1 0.8710 125s
+[pretrain] epoch 8/8 loss 0.2457 val_macro_f1 0.8725 118s
+[finetune] epoch 1/25 loss 0.9280 val_macro_f1 0.2895 14s
+[finetune] epoch 2/25 loss 0.5361 val_macro_f1 0.2572 15s
+[finetune] epoch 3/25 loss 0.4124 val_macro_f1 0.3205 14s
+[finetune] epoch 4/25 loss 0.3141 val_macro_f1 0.4170 14s
+[finetune] epoch 5/25 loss 0.2801 val_macro_f1 0.4860 15s
+[finetune] epoch 6/25 loss 0.2365 val_macro_f1 0.5118 17s
+[finetune] epoch 7/25 loss 0.1935 val_macro_f1 0.5263 11s
+[finetune] epoch 8/25 loss 0.1770 val_macro_f1 0.5263 9s
+[finetune] epoch 9/25 loss 0.1608 val_macro_f1 0.4991 9s
+[finetune] epoch 10/25 loss 0.1315 val_macro_f1 0.5614 8s
+[finetune] epoch 11/25 loss 0.1267 val_macro_f1 0.5547 14s
+[finetune] epoch 12/25 loss 0.1179 val_macro_f1 0.6154 14s
+[finetune] epoch 13/25 loss 0.1075 val_macro_f1 0.6025 15s
+[finetune] epoch 14/25 loss 0.0972 val_macro_f1 0.6239 16s
+[finetune] epoch 15/25 loss 0.0782 val_macro_f1 0.5926 23s
+[finetune] epoch 16/25 loss 0.0859 val_macro_f1 0.5856 30s
+[finetune] epoch 17/25 loss 0.0837 val_macro_f1 0.6006 27s
+[finetune] epoch 18/25 loss 0.0736 val_macro_f1 0.5875 32s
+[finetune] epoch 19/25 loss 0.0668 val_macro_f1 0.5990 31s
+[finetune] epoch 20/25 loss 0.0719 val_macro_f1 0.5978 28s
+[finetune] epoch 21/25 loss 0.0722 val_macro_f1 0.5947 34s
+[finetune] epoch 22/25 loss 0.0689 val_macro_f1 0.5966 28s
+[finetune] epoch 23/25 loss 0.0608 val_macro_f1 0.5940 29s
+[finetune] epoch 24/25 loss 0.0622 val_macro_f1 0.5968 27s
+[finetune] epoch 25/25 loss 0.0842 val_macro_f1 0.6035 27s
+{"train_images": 1217, "val_images": 303, "test_images": 364} {"male": {"precision": 0.4643, "recall": 0.5652, "f1": 0.5098, "n": 92}, "female": {"precision": 0.4706, "recall": 0.4348, "f1": 0.452, "n": 92}, "child": {"precision": 0.7904, "recall": 0.7333, "f1": 0.7608, "n": 180}}
+exit=0

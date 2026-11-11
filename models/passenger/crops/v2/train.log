@@ -1,0 +1,26 @@
+[finetune] epoch 1/25 train_loss 0.8627 val_loss 1.1332 val_macro_f1 0.3068 val_recall_spread 0.6697 16s
+[finetune] epoch 2/25 train_loss 0.5363 val_loss 1.0923 val_macro_f1 0.3386 val_recall_spread 0.7819 211s
+[finetune] epoch 3/25 train_loss 0.4132 val_loss 1.1192 val_macro_f1 0.2918 val_recall_spread 0.8379 23s
+[finetune] epoch 4/25 train_loss 0.3352 val_loss 1.0573 val_macro_f1 0.4049 val_recall_spread 0.8404 16s
+[finetune] epoch 5/25 train_loss 0.3125 val_loss 1.3687 val_macro_f1 0.3815 val_recall_spread 0.8987 15s
+[finetune] epoch 6/25 train_loss 0.2440 val_loss 1.5549 val_macro_f1 0.3967 val_recall_spread 0.9001 12s
+[finetune] epoch 7/25 train_loss 0.2105 val_loss 1.1584 val_macro_f1 0.5713 val_recall_spread 0.8821 9s
+[finetune] epoch 8/25 train_loss 0.1928 val_loss 1.2928 val_macro_f1 0.5731 val_recall_spread 0.9001 8s
+[finetune] epoch 9/25 train_loss 0.1736 val_loss 1.1207 val_macro_f1 0.5577 val_recall_spread 0.9077 7s
+[finetune] epoch 10/25 train_loss 0.1564 val_loss 1.2516 val_macro_f1 0.5412 val_recall_spread 0.8987 7s
+[finetune] epoch 11/25 train_loss 0.1447 val_loss 1.4141 val_macro_f1 0.5210 val_recall_spread 0.8987 7s
+[finetune] epoch 12/25 train_loss 0.1195 val_loss 1.3026 val_macro_f1 0.5440 val_recall_spread 0.8911 7s
+[finetune] epoch 13/25 train_loss 0.1217 val_loss 1.2538 val_macro_f1 0.5719 val_recall_spread 0.8911 7s
+[finetune] epoch 14/25 train_loss 0.1006 val_loss 0.9480 val_macro_f1 0.6060 val_recall_spread 0.7598 7s
+[finetune] epoch 15/25 train_loss 0.1158 val_loss 1.0977 val_macro_f1 0.5652 val_recall_spread 0.8390 8s
+[finetune] epoch 16/25 train_loss 0.0998 val_loss 1.2492 val_macro_f1 0.5462 val_recall_spread 0.8688 8s
+[finetune] epoch 17/25 train_loss 0.0791 val_loss 1.1898 val_macro_f1 0.5561 val_recall_spread 0.8480 8s
+[finetune] epoch 18/25 train_loss 0.0738 val_loss 1.2126 val_macro_f1 0.5584 val_recall_spread 0.8584 8s
+[finetune] epoch 19/25 train_loss 0.0720 val_loss 1.2379 val_macro_f1 0.5493 val_recall_spread 0.8688 8s
+[finetune] epoch 20/25 train_loss 0.0670 val_loss 1.2555 val_macro_f1 0.5811 val_recall_spread 0.8584 8s
+[finetune] epoch 21/25 train_loss 0.0765 val_loss 1.2911 val_macro_f1 0.5811 val_recall_spread 0.8584 8s
+[finetune] epoch 22/25 train_loss 0.0725 val_loss 1.3034 val_macro_f1 0.5736 val_recall_spread 0.8792 8s
+[finetune] epoch 23/25 train_loss 0.0708 val_loss 1.2798 val_macro_f1 0.5840 val_recall_spread 0.8584 8s
+[finetune] epoch 24/25 train_loss 0.0752 val_loss 1.2573 val_macro_f1 0.5840 val_recall_spread 0.8584 8s
+[finetune] epoch 25/25 train_loss 0.0640 val_loss 1.2660 val_macro_f1 0.5840 val_recall_spread 0.8584 8s
+{"train_images": 1260, "val_images": 307, "test_images": 364} {"male": {"precision": 0.5931, "recall": 0.86, "f1": 0.702, "n": 100}, "female": {"precision": 0.8095, "recall": 0.1771, "f1": 0.2906, "n": 96}, "child": {"precision": 0.7376, "recall": 0.9369, "f1": 0.8254, "n": 111}}

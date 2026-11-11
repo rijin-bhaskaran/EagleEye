@@ -613,3 +613,31 @@ GitHub: https://github.com/Syed-Misbahul-Islam
 * PyTorch
 * Streamlit
 * Raspberry Pi
+
+## Passenger monitoring (second camera)
+
+A separate process counts passengers, labels them Male / Female / Child (or `unknown`) and tracks occupied / vacant seats from a cabin camera.
+Both cameras and both monitors start together, and the dashboard shows both feeds:
+
+```
+python scripts/make_demo_video.py                          # once: builds data/passenger_demo.mp4 (test video for the passenger channel)
+
+python run_all.py                                          # inputs from config.yaml: driver = camera.source (laptop webcam),
+                                                           #   passenger = passenger.camera (mode: video -> the demo video)
+python run_all.py --passenger-source cabin.mp4             # passenger plays a different video, this run only
+python run_all.py --passenger-source 2                     # passenger from live camera 2, this run only
+python run_all.py --driver-source 0 --passenger-source 2   # two live cameras (must be different devices)
+python run_all.py --driver-source drv.mp4 --passenger-source cabin.mp4   # two videos, no cameras needed
+python run_all.py --no-passenger-classifier                # count + seats only (lightest on the CPU)
+
+python run_passenger.py                                    # the passenger monitor alone (feed on 127.0.0.1:8100)
+python scripts/fetch_passenger_models.py                   # only for the fallback classifier (passenger.classifier.model: levi_hassner)
+```
+
+A number is a camera index; anything else is a video path. To change the default permanently, edit `passenger.camera` in `config.yaml`
+(`mode: camera | video`, `index`, `loop`). The clip itself and the model weights are chosen per vehicle: set `passenger.vehicle_type: bus | car`
+and edit `video_path` and the weights under `passenger.vehicles.bus` / `passenger.vehicles.car` (see docs/CAR_MODEL.md).
+
+See `ARCHITECTURE.md` for the design and `WORKFLOW.md` for status, measurements and open risks.
+The passenger channel plays a video file by default (`passenger.camera.mode: video`); set `mode: camera` and `index` for a live camera.
+Seat polygons in `config.yaml` (`passenger.seats`) are a placeholder until measured from your camera view.

@@ -49,3 +49,4 @@ pytest>=7.4.0
 sounddevice>=0.4.6
 # simpleaudio>=1.0.4      # alternative audio backend
 # pyttsx3>=2.90           # spoken alerts (set alerts.tts: true in config)
+openvino>=2024.0   # optional: ~3x faster passenger detector on Intel CPUs (passenger.detector.backend)

@@ -1,0 +1,180 @@
+{
+  "params": {
+    "data": "seat_data",
+    "base": "models/seat_state/v2_epoch1.pt",
+    "epochs": "11",
+    "imgsz": "640",
+    "batch": "8",
+    "device": "cpu",
+    "patience": "11",
+    "target_map50": "0.0",
+    "target_precision": "0.9",
+    "fraction": "1.0",
+    "name": "v2b",
+    "score_only": "None",
+    "out": "models\\seat_state"
+  },
+  "train_minutes": 63.4,
+  "val": {
+    "split": "val",
+    "map50": 0.8174,
+    "map50_95": 0.4147,
+    "per_class": {
+      "Occupied": {
+        "precision": 0.8663,
+        "recall": 0.8378,
+        "ap50": 0.8465,
+        "ap50_95": 0.4581
+      },
+      "Unoccupied": {
+        "precision": 0.8679,
+        "recall": 0.7513,
+        "ap50": 0.7883,
+        "ap50_95": 0.3714
+      }
+    },
+    "operating_point": {
+      "conf": 0.362,
+      "f1_mean": 0.8292,
+      "f1": {
+        "Occupied": 0.8514,
+        "Unoccupied": 0.807
+      }
+    },
+    "counting": {
+      "frames": 215,
+      "overall": {
+        "Occupied": {
+          "mean_abs_error": 1.312,
+          "exact_share": 0.293
+        },
+        "Unoccupied": {
+          "mean_abs_error": 2.781,
+          "exact_share": 0.13
+        }
+      },
+      "per_recorder": {
+        "9c47c3": {
+          "frames": 89,
+          "Occupied": {
+            "mean_abs_error": 0.944,
+            "exact_share": 0.36
+          },
+          "Unoccupied": {
+            "mean_abs_error": 1.888,
+            "exact_share": 0.112
+          }
+        },
+        "84dfd8": {
+          "frames": 91,
+          "Occupied": {
+            "mean_abs_error": 1.692,
+            "exact_share": 0.22
+          },
+          "Unoccupied": {
+            "mean_abs_error": 3.473,
+            "exact_share": 0.165
+          }
+        },
+        "da709e": {
+          "frames": 35,
+          "Occupied": {
+            "mean_abs_error": 1.257,
+            "exact_share": 0.314
+          },
+          "Unoccupied": {
+            "mean_abs_error": 3.257,
+            "exact_share": 0.086
+          }
+        }
+      }
+    },
+    "speed_ms_per_image": {
+      "preprocess": 0.7,
+      "inference": 40.1,
+      "loss": 0.0,
+      "postprocess": 2.0
+    }
+  },
+  "test": {
+    "split": "test",
+    "map50": 0.8044,
+    "map50_95": 0.3947,
+    "per_class": {
+      "Occupied": {
+        "precision": 0.8535,
+        "recall": 0.8641,
+        "ap50": 0.8596,
+        "ap50_95": 0.4458
+      },
+      "Unoccupied": {
+        "precision": 0.8209,
+        "recall": 0.6994,
+        "ap50": 0.7491,
+        "ap50_95": 0.3437
+      }
+    },
+    "operating_point": {
+      "conf": 0.353,
+      "f1_mean": 0.8072,
+      "f1": {
+        "Occupied": 0.8584,
+        "Unoccupied": 0.756
+      }
+    },
+    "counting": {
+      "frames": 201,
+      "overall": {
+        "Occupied": {
+          "mean_abs_error": 1.498,
+          "exact_share": 0.194
+        },
+        "Unoccupied": {
+          "mean_abs_error": 2.667,
+          "exact_share": 0.134
+        }
+      },
+      "per_recorder": {
+        "9c47c3": {
+          "frames": 144,
+          "Occupied": {
+            "mean_abs_error": 1.375,
+            "exact_share": 0.201
+          },
+          "Unoccupied": {
+            "mean_abs_error": 2.312,
+            "exact_share": 0.16
+          }
+        },
+        "84dfd8": {
+          "frames": 21,
+          "Occupied": {
+            "mean_abs_error": 1.238,
+            "exact_share": 0.333
+          },
+          "Unoccupied": {
+            "mean_abs_error": 2.333,
+            "exact_share": 0.095
+          }
+        },
+        "da709e": {
+          "frames": 36,
+          "Occupied": {
+            "mean_abs_error": 2.139,
+            "exact_share": 0.083
+          },
+          "Unoccupied": {
+            "mean_abs_error": 4.278,
+            "exact_share": 0.056
+          }
+        }
+      }
+    },
+    "speed_ms_per_image": {
+      "preprocess": 0.6,
+      "inference": 39.5,
+      "loss": 0.0,
+      "postprocess": 1.8
+    }
+  }
+}

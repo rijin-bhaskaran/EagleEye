@@ -1,0 +1,23 @@
+[finetune] epoch 1/25 train_loss 0.9974 val_loss 1.0164 val_macro_f1 0.4900 val_recall_spread 0.5355 6s
+[finetune] epoch 2/25 train_loss 0.9213 val_loss 1.0095 val_macro_f1 0.5026 val_recall_spread 0.4448 6s
+[finetune] epoch 3/25 train_loss 0.8779 val_loss 0.9405 val_macro_f1 0.5352 val_recall_spread 0.4952 6s
+[finetune] epoch 4/25 train_loss 0.8075 val_loss 0.8975 val_macro_f1 0.5714 val_recall_spread 0.4259 17s
+[finetune] epoch 5/25 train_loss 0.7232 val_loss 0.8079 val_macro_f1 0.6240 val_recall_spread 0.5501 19s
+[finetune] epoch 6/25 train_loss 0.6778 val_loss 0.8153 val_macro_f1 0.5902 val_recall_spread 0.6144 16s
+[finetune] epoch 7/25 train_loss 0.6468 val_loss 0.7767 val_macro_f1 0.6535 val_recall_spread 0.5544 16s
+[finetune] epoch 8/25 train_loss 0.6168 val_loss 0.8006 val_macro_f1 0.6496 val_recall_spread 0.6408 17s
+[finetune] epoch 9/25 train_loss 0.5907 val_loss 0.7772 val_macro_f1 0.6594 val_recall_spread 0.6123 28s
+[finetune] epoch 10/25 train_loss 0.5636 val_loss 0.7573 val_macro_f1 0.6748 val_recall_spread 0.5394 290s
+[finetune] epoch 11/25 train_loss 0.5831 val_loss 0.7678 val_macro_f1 0.6829 val_recall_spread 0.5941 17s
+[finetune] epoch 12/25 train_loss 0.5378 val_loss 0.7461 val_macro_f1 0.6857 val_recall_spread 0.5380 16s
+[finetune] epoch 13/25 train_loss 0.5537 val_loss 0.7623 val_macro_f1 0.6825 val_recall_spread 0.5977 16s
+[finetune] epoch 14/25 train_loss 0.5420 val_loss 0.7499 val_macro_f1 0.6806 val_recall_spread 0.6095 19s
+[finetune] epoch 15/25 train_loss 0.5262 val_loss 0.7665 val_macro_f1 0.6732 val_recall_spread 0.6209 17s
+[finetune] epoch 16/25 train_loss 0.5297 val_loss 0.7553 val_macro_f1 0.6755 val_recall_spread 0.6091 16s
+[finetune] epoch 17/25 train_loss 0.5410 val_loss 0.7281 val_macro_f1 0.6785 val_recall_spread 0.6170 16s
+[finetune] epoch 18/25 train_loss 0.5132 val_loss 0.7297 val_macro_f1 0.6773 val_recall_spread 0.6131 17s
+[finetune] epoch 19/25 train_loss 0.5339 val_loss 0.7396 val_macro_f1 0.6779 val_recall_spread 0.6034 20s
+[finetune] epoch 20/25 train_loss 0.5164 val_loss 0.7427 val_macro_f1 0.6820 val_recall_spread 0.6135 24s
+[finetune] early stop: no val improvement for 8 epochs
+{"train_images": 1643, "val_images": 578, "test_images": null} {"male": {"precision": 0.7174, "recall": 0.9094, "f1": 0.8021, "n": 254}, "female": {"precision": 0.6915, "recall": 0.3714, "f1": 0.4833, "n": 175}, "child": {"precision": 0.7407, "recall": 0.8054, "f1": 0.7717, "n": 149}}
+exit=0

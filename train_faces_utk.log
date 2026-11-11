@@ -1,0 +1,54 @@
+[faces] mixed data: 20000 FairFace + 20852 UTKFace
+[faces] 39614 training rows, 1238 held out for choosing the best epoch
+[faces] epoch 1/3 step 0 loss 2.675 (5s)
+[faces] epoch 1/3 step 50 loss 2.381 (93s)
+[faces] epoch 1/3 step 100 loss 2.316 (203s)
+[faces] epoch 1/3 step 150 loss 2.262 (290s)
+[faces] epoch 1/3 step 200 loss 2.222 (378s)
+[faces] epoch 1/3 step 250 loss 2.187 (493s)
+[faces] epoch 1/3 step 300 loss 2.165 (551s)
+[faces] epoch 1/3 step 350 loss 2.146 (583s)
+[faces] epoch 1/3 step 400 loss 2.133 (610s)
+[faces] epoch 1/3 step 450 loss 2.115 (642s)
+[faces] epoch 1/3 step 500 loss 2.100 (669s)
+[faces] epoch 1/3 step 550 loss 2.087 (695s)
+[faces] epoch 1/3 step 600 loss 2.078 (722s)
+[faces] epoch 1: held-out gender acc 0.843, child AUC 0.979, loss 2.075
+[faces] epoch 2/3 step 0 loss 1.960 (733s)
+[faces] epoch 2/3 step 50 loss 1.946 (760s)
+[faces] epoch 2/3 step 100 loss 1.939 (785s)
+[faces] epoch 2/3 step 150 loss 1.934 (813s)
+[faces] epoch 2/3 step 200 loss 1.924 (838s)
+[faces] epoch 2/3 step 250 loss 1.921 (864s)
+[faces] epoch 2/3 step 300 loss 1.923 (892s)
+[faces] epoch 2/3 step 350 loss 1.919 (918s)
+[faces] epoch 2/3 step 400 loss 1.919 (944s)
+[faces] epoch 2/3 step 450 loss 1.917 (1457s)
+[faces] epoch 2/3 step 500 loss 1.913 (1496s)
+[faces] epoch 2/3 step 550 loss 1.910 (1523s)
+[faces] epoch 2/3 step 600 loss 1.909 (1548s)
+[faces] epoch 2: held-out gender acc 0.855, child AUC 0.982, loss 1.909
+[faces] epoch 3/3 step 0 loss 1.972 (1559s)
+[faces] epoch 3/3 step 50 loss 1.837 (1581s)
+[faces] epoch 3/3 step 100 loss 1.838 (1601s)
+[faces] epoch 3/3 step 150 loss 1.837 (1620s)
+[faces] epoch 3/3 step 200 loss 1.839 (1640s)
+[faces] epoch 3/3 step 250 loss 1.844 (1660s)
+[faces] epoch 3/3 step 300 loss 1.845 (1680s)
+[faces] epoch 3/3 step 350 loss 1.846 (1700s)
+[faces] epoch 3/3 step 400 loss 1.842 (1724s)
+[faces] epoch 3/3 step 450 loss 1.844 (1748s)
+[faces] epoch 3/3 step 500 loss 1.840 (1773s)
+[faces] epoch 3/3 step 550 loss 1.840 (1796s)
+[faces] epoch 3/3 step 600 loss 1.836 (1819s)
+[faces] epoch 3: held-out gender acc 0.868, child AUC 0.985, loss 1.835
+[faces] registered v2. Next: python -m passenger.tune_classifier --version v2
+libpng warning: iCCP: known incorrect sRGB profile
+Corrupt JPEG data: premature end of data segment
+Corrupt JPEG data: premature end of data segment
+Corrupt JPEG data: premature end of data segment
+Corrupt JPEG data: premature end of data segment
+libpng warning: iCCP: known incorrect sRGB profile
+Corrupt JPEG data: premature end of data segment
+libpng warning: iCCP: known incorrect sRGB profile
+Corrupt JPEG data: premature end of data segment

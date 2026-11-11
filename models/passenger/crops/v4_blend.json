@@ -1,0 +1,156 @@
+{
+ "models": [
+  "models/passenger/crops/v4_seed0/model.pt",
+  "models/passenger/crops/v4_seed1/model.pt",
+  "models/passenger/crops/v4_seed2/model.pt"
+ ],
+ "input": "112x112 top-60% square person crop",
+ "classes": [
+  "male",
+  "female",
+  "child"
+ ],
+ "combine": "mean of the 3 softmax outputs",
+ "face_model_weight": 0.0,
+ "log_prob_offsets": {
+  "male": 0.0,
+  "female": 2.0,
+  "child": 0.5
+ },
+ "chosen_on": "validation only (macro-F1 and worst-class recall together)",
+ "results": {
+  "val_crop-only": {
+   "point": {
+    "acc": 0.7856,
+    "macroF1": 0.754,
+    "balAcc": 0.7568,
+    "spread": 0.5291,
+    "minRecall": 0.4207,
+    "recall": {
+     "male": 0.9498,
+     "female": 0.4207,
+     "child": 0.9
+    }
+   },
+   "ci95_by_group": {
+    "acc": [
+     0.695,
+     0.916
+    ],
+    "macroF1": [
+     0.649,
+     0.892
+    ],
+    "spread": [
+     0.202,
+     0.733
+    ],
+    "minRecall": [
+     0.226,
+     0.789
+    ]
+   },
+   "groups": 102
+  },
+  "val_calibrated": {
+   "point": {
+    "acc": 0.8353,
+    "macroF1": 0.8337,
+    "balAcc": 0.8372,
+    "spread": 0.0299,
+    "minRecall": 0.8201,
+    "recall": {
+     "male": 0.8201,
+     "female": 0.8415,
+     "child": 0.85
+    }
+   },
+   "ci95_by_group": {
+    "acc": [
+     0.772,
+     0.895
+    ],
+    "macroF1": [
+     0.748,
+     0.894
+    ],
+    "spread": [
+     0.016,
+     0.239
+    ],
+    "minRecall": [
+     0.654,
+     0.867
+    ]
+   },
+   "groups": 102
+  },
+  "test_crop-only": {
+   "point": {
+    "acc": 0.7872,
+    "macroF1": 0.7581,
+    "balAcc": 0.7537,
+    "spread": 0.3785,
+    "minRecall": 0.5347,
+    "recall": {
+     "male": 0.9132,
+     "female": 0.5347,
+     "child": 0.8133
+    }
+   },
+   "ci95_by_group": {
+    "acc": [
+     0.703,
+     0.96
+    ],
+    "macroF1": [
+     0.624,
+     0.932
+    ],
+    "spread": [
+     0.106,
+     0.621
+    ],
+    "minRecall": [
+     0.3,
+     0.875
+    ]
+   },
+   "groups": 14
+  },
+  "test_calibrated": {
+   "point": {
+    "acc": 0.7709,
+    "macroF1": 0.7644,
+    "balAcc": 0.7793,
+    "spread": 0.1583,
+    "minRecall": 0.6889,
+    "recall": {
+     "male": 0.8017,
+     "female": 0.8472,
+     "child": 0.6889
+    }
+   },
+   "ci95_by_group": {
+    "acc": [
+     0.677,
+     0.964
+    ],
+    "macroF1": [
+     0.653,
+     0.951
+    ],
+    "spread": [
+     0.026,
+     0.399
+    ],
+    "minRecall": [
+     0.543,
+     0.932
+    ]
+   },
+   "groups": 14
+  }
+ },
+ "latency_ms_laptop_cpu_3seeds": 24.3
+}

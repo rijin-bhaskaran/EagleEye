@@ -1,0 +1,74 @@
+{
+ "weights": "C:\\Users\\RijinBhaskaran\\Documents\\Work Related\\EagleEye\\models\\passenger\\person_det\\v2\\run\\weights\\best.pt",
+ "data": "C:\\Users\\RijinBhaskaran\\Documents\\Work Related\\EagleEye\\passenger_data\\annotations\\person_det_v2\\data.yaml",
+ "val": {
+  "P": 0.9473,
+  "R": 0.9061,
+  "AP50": 0.9638,
+  "mAP50_95": 0.7771
+ },
+ "test": {
+  "P": 0.8811,
+  "R": 0.764,
+  "AP50": 0.835,
+  "mAP50_95": 0.6236
+ },
+ "count_val": {
+  "all": {
+   "images": 355,
+   "count_MAE": 0.259,
+   "exact": 0.761,
+   "mean_pred_minus_true": 0.101
+  },
+  "ba": {
+   "images": 19,
+   "count_MAE": 0.368,
+   "exact": 0.632,
+   "mean_pred_minus_true": -0.053
+  },
+  "car": {
+   "images": 227,
+   "count_MAE": 0.269,
+   "exact": 0.758,
+   "mean_pred_minus_true": 0.101
+  },
+  "ck": {
+   "images": 49,
+   "count_MAE": 0.245,
+   "exact": 0.776,
+   "mean_pred_minus_true": 0.082
+  },
+  "coc": {
+   "images": 31,
+   "count_MAE": 0.226,
+   "exact": 0.774,
+   "mean_pred_minus_true": 0.161
+  },
+  "ih": {
+   "images": 29,
+   "count_MAE": 0.172,
+   "exact": 0.828,
+   "mean_pred_minus_true": 0.172
+  }
+ },
+ "count_test": {
+  "all": {
+   "images": 238,
+   "count_MAE": 0.571,
+   "exact": 0.576,
+   "mean_pred_minus_true": -0.134
+  },
+  "car": {
+   "images": 213,
+   "count_MAE": 0.634,
+   "exact": 0.531,
+   "mean_pred_minus_true": -0.155
+  },
+  "coc": {
+   "images": 25,
+   "count_MAE": 0.04,
+   "exact": 0.96,
+   "mean_pred_minus_true": 0.04
+  }
+ }
+}

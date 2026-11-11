@@ -15,10 +15,29 @@ snapshot_*.png
 models/*.pt
 models/*.pth
 models/*.task
+models/passenger/*.caffemodel
+models/passenger/champion.pt
+models/passenger/v*/
+models/passenger/face/v*/
 yolov8n.pt
 data/raw/
 data/videos/
 data/features.csv
 
+# passenger dataset: bulk media stays local; labels + manifest are tracked
+passenger_data/raw/
+passenger_data/processed/
+passenger_data/annotations/**/images/
+# only your own hand-made labels are tracked; exports and converted open-data labels are rebuildable
+passenger_data/annotations/*
+!passenger_data/annotations/labels/
+
 .DS_Store
 .pytest_cache/
+
+# Seat-state dataset rebuilt from the Roboflow export, and its training runs
+seat_data/
+models/seat_state/*/run/
+
+# Local secrets
+.env

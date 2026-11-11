@@ -1,0 +1,180 @@
+{
+  "params": {
+    "data": "seat_data",
+    "base": "models/seat_state/v2b/run/weights/last.pt",
+    "epochs": "4",
+    "imgsz": "640",
+    "batch": "8",
+    "device": "cpu",
+    "patience": "4",
+    "target_map50": "0.0",
+    "target_precision": "0.9",
+    "fraction": "1.0",
+    "name": "v2c",
+    "score_only": "None",
+    "out": "models\\seat_state"
+  },
+  "train_minutes": 30.1,
+  "val": {
+    "split": "val",
+    "map50": 0.8195,
+    "map50_95": 0.4207,
+    "per_class": {
+      "Occupied": {
+        "precision": 0.8537,
+        "recall": 0.844,
+        "ap50": 0.8534,
+        "ap50_95": 0.4653
+      },
+      "Unoccupied": {
+        "precision": 0.8563,
+        "recall": 0.7381,
+        "ap50": 0.7856,
+        "ap50_95": 0.3761
+      }
+    },
+    "operating_point": {
+      "conf": 0.342,
+      "f1_mean": 0.821,
+      "f1": {
+        "Occupied": 0.8496,
+        "Unoccupied": 0.7924
+      }
+    },
+    "counting": {
+      "frames": 215,
+      "overall": {
+        "Occupied": {
+          "mean_abs_error": 1.344,
+          "exact_share": 0.274
+        },
+        "Unoccupied": {
+          "mean_abs_error": 2.833,
+          "exact_share": 0.13
+        }
+      },
+      "per_recorder": {
+        "9c47c3": {
+          "frames": 89,
+          "Occupied": {
+            "mean_abs_error": 1.045,
+            "exact_share": 0.337
+          },
+          "Unoccupied": {
+            "mean_abs_error": 2.022,
+            "exact_share": 0.18
+          }
+        },
+        "84dfd8": {
+          "frames": 91,
+          "Occupied": {
+            "mean_abs_error": 1.593,
+            "exact_share": 0.253
+          },
+          "Unoccupied": {
+            "mean_abs_error": 3.56,
+            "exact_share": 0.044
+          }
+        },
+        "da709e": {
+          "frames": 35,
+          "Occupied": {
+            "mean_abs_error": 1.457,
+            "exact_share": 0.171
+          },
+          "Unoccupied": {
+            "mean_abs_error": 3.0,
+            "exact_share": 0.229
+          }
+        }
+      }
+    },
+    "speed_ms_per_image": {
+      "preprocess": 0.7,
+      "inference": 40.8,
+      "loss": 0.0,
+      "postprocess": 2.1
+    }
+  },
+  "test": {
+    "split": "test",
+    "map50": 0.8017,
+    "map50_95": 0.3921,
+    "per_class": {
+      "Occupied": {
+        "precision": 0.8443,
+        "recall": 0.8618,
+        "ap50": 0.8591,
+        "ap50_95": 0.4431
+      },
+      "Unoccupied": {
+        "precision": 0.8341,
+        "recall": 0.6691,
+        "ap50": 0.7443,
+        "ap50_95": 0.3411
+      }
+    },
+    "operating_point": {
+      "conf": 0.349,
+      "f1_mean": 0.7991,
+      "f1": {
+        "Occupied": 0.8545,
+        "Unoccupied": 0.7437
+      }
+    },
+    "counting": {
+      "frames": 201,
+      "overall": {
+        "Occupied": {
+          "mean_abs_error": 1.388,
+          "exact_share": 0.219
+        },
+        "Unoccupied": {
+          "mean_abs_error": 3.244,
+          "exact_share": 0.075
+        }
+      },
+      "per_recorder": {
+        "9c47c3": {
+          "frames": 144,
+          "Occupied": {
+            "mean_abs_error": 1.382,
+            "exact_share": 0.229
+          },
+          "Unoccupied": {
+            "mean_abs_error": 2.972,
+            "exact_share": 0.104
+          }
+        },
+        "84dfd8": {
+          "frames": 21,
+          "Occupied": {
+            "mean_abs_error": 1.619,
+            "exact_share": 0.19
+          },
+          "Unoccupied": {
+            "mean_abs_error": 3.095,
+            "exact_share": 0.0
+          }
+        },
+        "da709e": {
+          "frames": 36,
+          "Occupied": {
+            "mean_abs_error": 1.278,
+            "exact_share": 0.194
+          },
+          "Unoccupied": {
+            "mean_abs_error": 4.417,
+            "exact_share": 0.0
+          }
+        }
+      }
+    },
+    "speed_ms_per_image": {
+      "preprocess": 0.6,
+      "inference": 40.1,
+      "loss": 0.0,
+      "postprocess": 2.2
+    }
+  }
+}

@@ -1,0 +1,6 @@
+QA gate 2026-10-21 15:27
+- tests: 260 passed / 1 failed (60s), 260 passed / 1 failed (66s)  [FAIL: failures, or runs disagree]
+- overhead per frame (excl. model): 6.3 ms [pipeline 2.7, overlay 0.3, jpeg 3.2, payload 0.10] budget 15 ms [OK]
+- evaluation: NOT RUN (pass --data passenger_data)
+
+Paste the block above into the WORKFLOW.md 'QA gate history' table.

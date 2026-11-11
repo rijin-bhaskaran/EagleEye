@@ -10,12 +10,16 @@ add a web framework to the install. Three endpoints do the work:
 * ``/api/telemetry``  - the element-id -> value payload the page polls
 * ``/api/command``    - recalibrate / mute / snapshot / stop from the browser
 * ``/api/fleet``      - historical sessions from the SQLite event store
+* ``/video/passenger`` and ``/api/passenger`` - the passenger monitor's feed and
+  telemetry, proxied from its loopback server so the browser only ever talks to
+  this one origin (no CORS, one port to expose)
 """
 from __future__ import annotations
 
 import json
 import sqlite3
 import threading
+import urllib.request
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -31,10 +35,14 @@ _BOUNDARY = "eagleeyeframe"
 
 _COMMANDS = {"recalibrate", "mute", "unmute", "snapshot", "stop"}
 
+# The passenger server is on loopback; an HTTP(S)_PROXY from the environment must not hijack it.
+_LOCAL = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+
 
 class _Handler(BaseHTTPRequestHandler):
     hub: TelemetryHub = None            # type: ignore[assignment]
     db_path: str = "logs/eagleeye.db"
+    passenger_url: Optional[str] = None
     protocol_version = "HTTP/1.1"
     # Send small writes immediately; Nagle + delayed ACK can hold an MJPEG
     # frame back for tens of milliseconds.
@@ -82,6 +90,10 @@ class _Handler(BaseHTTPRequestHandler):
             self._json(self.hub.snapshot())
         elif route == "/api/fleet":
             self._json(self._fleet())
+        elif route == "/api/passenger":
+            self._passenger_json()
+        elif route == "/video/passenger":
+            self._passenger_stream()
         elif route == "/healthz":
             self._json({"ok": True})
         else:
@@ -89,6 +101,14 @@ class _Handler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802
         if self.path.split("?")[0] != "/api/command":
+            try:                           # drain the body first: see PassengerServer._drain
+                n = int(self.headers.get("Content-Length") or 0)
+            except ValueError:
+                n = 0
+            if 0 < n <= 1 << 20:
+                self.rfile.read(n)
+            else:
+                self.close_connection = True
             self._send(404, b"not found", "text/plain")
             return
         try:
@@ -127,6 +147,45 @@ class _Handler(BaseHTTPRequestHandler):
         except (BrokenPipeError, ConnectionAbortedError, ConnectionResetError):
             pass   # browser navigated away or closed the tab
 
+    # -- passenger proxy ------------------------------------------------
+    def _passenger_json(self) -> None:
+        if not self.passenger_url:
+            self._json({"online": False})
+            return
+        try:
+            with _LOCAL.open(self.passenger_url + "/api/passenger", timeout=1.5) as up:
+                body = up.read()
+        except OSError:                    # refused, timed out, reset: the passenger monitor is not up
+            self._json({"online": False})
+            return
+        self._send(200, body, "application/json")
+
+    def _passenger_stream(self) -> None:
+        if not self.passenger_url:
+            self._send(503, b"passenger monitor not configured", "text/plain")
+            return
+        try:
+            up = _LOCAL.open(self.passenger_url + "/video", timeout=3)
+        except OSError:
+            self._send(503, b"passenger monitor offline", "text/plain")
+            return
+        self.close_connection = True
+        self.send_response(200)
+        self.send_header("Cache-Control", "no-cache, private")
+        self.send_header("Connection", "close")
+        self.send_header("Content-Type", up.headers.get("Content-Type", "multipart/x-mixed-replace"))
+        self.end_headers()
+        try:
+            while True:
+                chunk = up.read1(65536)    # whatever has arrived: waiting to fill a buffer would add lag
+                if not chunk:
+                    break
+                self.wfile.write(chunk)
+        except OSError:                    # browser left (broken pipe) or upstream stalled / dropped
+            pass
+        finally:
+            up.close()
+
     # -- fleet history --------------------------------------------------
     def _fleet(self) -> dict:
         if not Path(self.db_path).exists():
@@ -153,9 +212,10 @@ class WebUI:
     """Owns the server thread and its lifetime."""
 
     def __init__(self, hub: TelemetryHub, host: str = "127.0.0.1", port: int = 8000,
-                 db_path: str = "logs/eagleeye.db") -> None:
+                 db_path: str = "logs/eagleeye.db", passenger_url: Optional[str] = None) -> None:
         self.hub = hub
-        handler = type("EagleEyeHandler", (_Handler,), {"hub": hub, "db_path": db_path})
+        handler = type("EagleEyeHandler", (_Handler,),
+                       {"hub": hub, "db_path": db_path, "passenger_url": passenger_url})
 
         # Port already taken (a previous run still closing) -> try the next few.
         last: Optional[OSError] = None

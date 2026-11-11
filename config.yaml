@@ -102,3 +102,141 @@ logging:
 calibration:
   duration_s: 10.0
   file: calibration.json
+
+# =====================================================================
+# Passenger monitoring (separate camera + process; see ARCHITECTURE.md)
+# =====================================================================
+passenger:
+  vehicle_type: car           # THE SWITCH: bus | car. Restart run_passenger.py (or run_all.py) after changing it.
+                              # bus = person detector + face classifier + seat model
+                              # car = person detector + crop classifier (male/female/child), see `vehicles.car` and docs/CAR_MODEL.md
+  threads: 4                  # torch threads for this process; the driver monitor needs the rest of the cores
+  vehicles:
+    # What a vehicle lists here replaces the shared setting of the same name further down, setting by setting (a profile that
+    # names only `camera.video_path` keeps the shared camera.fps, loop, ...). So `vehicle_type` alone picks the weights and the
+    # static video the dashboard plays. Change a path here, not in the shared sections.
+    bus:
+      camera:
+        video_path: data/bus/vid-9.mp4      # video mode: any mp4/avi. Build a demo one with: python scripts/make_demo_video.py
+      detector:
+        model: yolov8n.pt                   # COCO 'person' class; swap for yolo11n.pt etc.
+        conf: 0.40
+        imgsz: 640                          # 960 ran ~2 FPS on CPU; 640 is ~2x faster. Raise only on a GPU
+        backend: openvino                   # openvino = ~3x faster than torch on an Intel CPU (auto-exports yolov8n_openvino_model/ on first run; needs `pip install openvino`); torch = plain PyTorch
+        classes: [0]                        # model class ids that mean 'person': [0] for COCO yolov8n; null for a model fine-tuned on male/female/child
+      classifier:
+        model: torch                        # face-based. torch = trained on FairFace (CC BY 4.0, the registry champion) | levi_hassner = pretrained nets (research licence)
+        weights: models/passenger/face/champion.pt   # used when model: torch
+      seat_state:
+        enabled: true
+        weights: models/seat_state/v2b/run/weights/best.pt   # Occupied / Unoccupied seat detector trained on the busCabin dataset (python -m passenger.train_seats)
+    car:
+      camera:
+        video_path: data/car/car-vid-3.mp4  # video mode: the clip the dashboard plays for a car (any mp4/avi, e.g. one from data/car/)
+      detector:
+        model: yolov8n.pt                   # same COCO person detector as the bus
+        conf: 0.10                          # low on purpose: ByteTrack keeps a person through a weak frame by matching it to a low-score box (it never starts a track below tracker.new_track_thresh). At 0.35 the boxes blinked
+        imgsz: 416
+        backend: torch                      # torch: the OpenVINO export is built once for one image size (the bus uses 640)
+        classes: [0]
+        iou: 0.4                            # two boxes overlapping more than this count as one person (stock 0.7). At 0.7 a crowded rear seat drew about 7 boxes for 5 people; at 0.4 the duplicates fell from 34 to 1.6 per 100 frames with no person lost on the validation videos
+        tracker:                            # ByteTrack overrides of the stock config (omit for the stock one)
+          track_high_thresh: 0.35
+          new_track_thresh: 0.35            # a NEW person needs a confident box ...
+          track_low_thresh: 0.1             # ... but a tracked one survives on a weak one
+          track_buffer: 60                  # frames a lost person is remembered (stock 30)
+      classifier:
+        model: crops                        # person-crop ensemble: male / female / child from the upper body, no face needed
+        crops:
+          weights:                          # 3 networks (seeds) trained by python -m passenger.train_crops; their probabilities are averaged
+            - models/passenger/crops/v4_seed0/model.pt
+            - models/passenger/crops/v4_seed1/model.pt
+            - models/passenger/crops/v4_seed2/model.pt
+          log_offsets: {male: 0.0, female: 1.5, child: 1.0}   # added to each class's log-probability, to correct the few-women / few-children bias of the training set. Chosen by the owner (2026-10-29) as the most even row of the sweep: men / women / children correct 87 / 74 / 62 on validation, 71 / 70 / 76 on test (single frame). 1.5 / 1.5 found more children but read a third of test women as children; the earlier 2.0 / 0.5 turned men into women. No setting serves every class (docs/CAR_MODEL.md)
+          min_prob: null                    # answer 'unknown' below this probability (null = always answer). Choose it on validation data, never on test
+      seat_state:
+        enabled: false                      # the bus seat model does not apply to a car
+      car:
+        pipeline: two_stage                 # two_stage = person detector + crop classifier (what exists today) | cabin_model = one 6-class model, see `car:` below
+        seats: 5                            # seats in the vehicle: dashboard shows occupied / vacant against this
+        stability:                          # calmer boxes and IDs (passenger/stability.py); delete the block, or enabled: false, to switch it off
+          hold_frames: 4                    # a box the tracker lost stays on screen this many frames (shown, not counted, not classified)
+          id_memory: 45                     # a tracker ID that appears on top of someone lost within this many frames keeps their ID and label
+          id_iou: 0.3                       # how much a new box must overlap a lost person to count as them
+          ema: 0.6                          # box smoothing: 1 = none, lower = smoother but laggier
+  car:
+    # Used only by `car.pipeline: cabin_model`: one YOLO trained with python -m passenger.train_car (classes: male, female, child, seatbelt, no_seatbelt, child_seat).
+    # Not available yet: no such model has been trained, and the car pipeline refuses to start without its weights.
+    weights: models/car_cabin/champion.pt   # not in the repo: train it first
+    conf: 0.35
+    imgsz: 640
+    backend: torch            # torch | openvino (auto-exports next to the .pt on first run)
+    seats: 5                  # seats in the vehicle: dashboard shows occupied / vacant against this
+    rules:
+      window: 15              # per-person votes kept for smoothing (class, belt, child-seat)
+      min_votes: 3            # votes before a belt verdict other than 'unknown'
+      belt_overlap: 0.5       # share of a belt box that must lie inside a person's box to belong to them
+      belt_on_ratio: 0.3      # share of recent frames with a belt seen => belted. Low on purpose: belts are thin and often hidden
+      child_seat_overlap: 0.5 # share of a child's box inside a child-seat box => child is in the seat
+      seat_window: 15         # median window for the number of installed child seats
+  camera:
+    mode: video               # camera = live cabin camera | video = play a video file instead (testing without a second camera)
+    index: 1                  # camera mode: device index. Must differ from the driver camera (camera.source) when both are webcams
+                              # video mode: the clip is `vehicles.<vehicle_type>.camera.video_path` above
+    loop: true               # video mode: restart when it ends (false = stop at the end; the dashboard then shows it offline)
+    width: 1280               # far rows are small, so capture more pixels than the driver camera
+    height: 720
+    capture_fps: 30
+    fps: 12                   # inference rate the loop aims for; the edge target is 10-12
+  server:
+    port: 8100                # internal, loopback only; the dashboard proxies it
+  display:
+    draw_seats: false         # seat outlines clutter the feed (placeholder grid is uncalibrated); enable while calibrating polygons
+  # detector: person detector model, conf, imgsz, backend and classes are set per vehicle under `vehicles` above
+  seats:
+    # PLACEHOLDER layout: a generated perspective grid, NOT calibrated to any
+    # real camera. Replace with measured polygons ("R1L1": [[x,y],...] in 0-1
+    # image coordinates) under `polygons` once cabin footage exists.
+    rows: 10
+    left: 2
+    right: 3
+    polygons: {}
+    polygons_file: null       # measured seats from `python scripts/draw_seat_zones.py`, e.g. seat_zones.yaml. Needs a fixed cabin camera.
+  seat_state:
+    # `enabled` and `weights` are set per vehicle under `vehicles` above. When enabled, seat occupied/vacant counts come
+    # from the model and need no seat-polygon calibration.
+    conf: 0.35               # best-F1 operating point of v2b on the held-out test clips
+    imgsz: 640
+    every: 3                  # run on every 3rd frame, reuse in between (seats don't move)
+    count_reads: 9            # seats not measured: seat counts use the median of this many model reads
+    hold_reads: 3             # ... and a shown count changes only after the median disagrees with it this many reads in a row
+    on_reads: 2               # measured seats only: model reads in a row that show a seat occupied before its slot lights
+    off_reads: 5              # ... and reads in a row without it before the slot goes idle (a read happens every `every` frames)
+  occupancy:
+    min_overlap: 0.30        # share of a person's box that must lie inside the seat
+    on_frames: 3              # consecutive detections before a seat becomes occupied
+    off_frames: 15            # consecutive misses before it becomes vacant
+    count_window: 5           # median window for the passenger count
+  classifier:
+    # Male / Female / Child. `model` and the weights are set per vehicle under `vehicles` above; the numbers below tune the
+    # face-based models (torch, levi_hassner) and are unused by `crops`, except window / min_votes / budget_per_frame / background /
+    # min_person_px, which apply to every model. Answers 'unknown' rather than guess.
+    # The levi_hassner weights are Levi & Hassner age/gender CNNs (research licence - check before commercial use).
+    teen_weight: 0.25         # share of the ambiguous 10-19 age group counted as child (torch model). Tuned with child_threshold
+                              # and min_conf on Open Images train/val by `python -m passenger.tune_classifier`
+    model_dir: models/passenger
+    face_detector: yunet      # yunet (OpenCV, finds more profile/blurred faces; fetch with scripts/fetch_passenger_models.py) | mediapipe
+    yunet_weights: models/passenger/face_detection_yunet_2023mar.onnx
+    yunet_score: 0.6
+    face_confidence: 0.5      # MediaPipe only
+    face_margin: 0.1          # context kept around the face box (share of its size). 0.4 -> 0.1 lifted pipeline macro-F1 0.52 -> 0.60 (WORKFLOW Phase 12)
+    min_person_px: 60         # shorter person boxes are too small to read a face
+    min_face_px: 24
+    child_threshold: 0.3      # P(child) needed to call someone a child. These three numbers belong to the model: tuned for the
+                              # FairFace model (0.5 / 0.4 / 0.5). The pretrained levi_hassner nets need 0.95 / 0.6.
+    min_conf: 0.5             # gender confidence needed to answer
+    window: 15                # per-person votes kept for smoothing
+    min_votes: 3              # votes needed before a label is shown
+    background: true          # run face reads on a worker thread so they never slow the video loop (labels trail by one pass)
+    budget_per_frame: 3       # classifier calls per frame (edge compute cap)
+

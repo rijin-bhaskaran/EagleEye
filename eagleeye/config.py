@@ -97,6 +97,29 @@ DEFAULTS: Dict[str, Any] = {
         "flush_every": 100,
     },
     "calibration": {"duration_s": 10.0, "file": "calibration.json"},
+    "passenger": {
+        "vehicle_type": "bus",
+        "threads": 4,
+        "vehicles": {},
+        "car": {"pipeline": "cabin_model", "weights": "models/car_cabin/champion.pt", "conf": 0.35, "imgsz": 640, "backend": "torch", "seats": 5,
+                "rules": {"window": 15, "min_votes": 3, "belt_overlap": 0.5, "belt_on_ratio": 0.3,
+                          "child_seat_overlap": 0.5, "seat_window": 15}},
+        "camera": {"mode": "video", "index": 1, "video_path": "data/passenger_demo.mp4", "loop": True, "width": 1280, "height": 720, "capture_fps": 30, "fps": 10},
+        "server": {"port": 8100},
+        "display": {"draw_seats": False},
+        "detector": {"model": "yolov8n.pt", "conf": 0.40, "imgsz": 640, "classes": [0], "backend": "openvino"},
+        "seats": {"rows": 10, "left": 2, "right": 3, "polygons": {}, "polygons_file": None},
+        "occupancy": {"min_overlap": 0.30, "on_frames": 3, "off_frames": 15, "count_window": 5},
+        "seat_state": {"enabled": False, "weights": "models/seat_state/v2b/run/weights/best.pt", "conf": 0.35,
+                       "imgsz": 640, "every": 3, "window": 5, "count_reads": 9, "hold_reads": 3, "on_reads": 2, "off_reads": 5},
+        "classifier": {
+            "model": "levi_hassner", "weights": "models/passenger/face/champion.pt", "teen_weight": 0.0,
+            "model_dir": "models/passenger", "face_confidence": 0.5, "face_detector": "mediapipe",
+            "yunet_weights": "models/passenger/face_detection_yunet_2023mar.onnx", "yunet_score": 0.6, "face_margin": 0.4, "min_person_px": 60,
+            "min_face_px": 24, "child_threshold": 0.95, "min_conf": 0.6,
+            "window": 15, "min_votes": 3, "budget_per_frame": 3, "background": True,
+        },
+    },
 }
 
 
@@ -131,8 +154,27 @@ def _deep_merge(base: Dict[str, Any], override: Dict[str, Any]) -> Dict[str, Any
     return out
 
 
-def load_config(path: str | Path | None = None) -> Cfg:
-    """Load ``config.yaml`` merged over the built-in defaults."""
+def _apply_vehicle_profile(data: Dict[str, Any], vehicle_type: str | None = None) -> Dict[str, Any]:
+    """``passenger.vehicles.<vehicle_type>`` replaces, setting by setting, the shared ``passenger`` settings of the same name.
+
+    So one switch (``passenger.vehicle_type``) selects the weights, the static video and anything else that differs between
+    a bus and a car. A vehicle with no profile keeps the shared settings."""
+    p = data.get("passenger")
+    if not isinstance(p, dict):
+        return data
+    if vehicle_type is not None:                       # a caller that means one vehicle whatever the file says (benchmarks, tools)
+        p["vehicle_type"] = vehicle_type
+    name = str(p.get("vehicle_type", "bus")).strip().lower()
+    profiles = {str(k).strip().lower(): v for k, v in (p.get("vehicles") or {}).items()}
+    if isinstance(profiles.get(name), dict):
+        data["passenger"] = _deep_merge(p, profiles[name])
+    return data
+
+
+def load_config(path: str | Path | None = None, vehicle_type: str | None = None) -> Cfg:
+    """Load ``config.yaml`` merged over the built-in defaults, then apply the selected vehicle's profile.
+
+    ``vehicle_type`` overrides ``passenger.vehicle_type`` from the file for this call only."""
     data = copy.deepcopy(DEFAULTS)
     if path is not None:
         p = Path(path)
@@ -141,7 +183,7 @@ def load_config(path: str | Path | None = None) -> Cfg:
                 raise RuntimeError("PyYAML is required to read a config file")
             user = yaml.safe_load(p.read_text()) or {}
             data = _deep_merge(data, user)
-    return _wrap(data)
+    return _wrap(_apply_vehicle_profile(data, vehicle_type))
 
 
 def load_calibration(path: str | Path) -> Dict[str, float] | None:

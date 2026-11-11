@@ -1,0 +1,59 @@
+{
+  "models": {
+    "v0": {
+      "weights": "yolov8n.pt",
+      "base": null,
+      "classes": [
+        0
+      ],
+      "dataset": {
+        "name": "pretrained"
+      },
+      "params": {},
+      "created": "2026-10-20T14:06:36",
+      "benchmark": "94806531e8d324b4",
+      "metrics": {
+        "recall": 0.8411214953271028,
+        "precision": 0.7758620689655172,
+        "ap50": 0.8187335847403732,
+        "map50_95": 0.5986489694393108,
+        "count_mae": 0.5217391304347826
+      },
+      "status": "champion"
+    },
+    "v1": {
+      "weights": "models\\passenger\\v1\\best.pt",
+      "base": "v0",
+      "classes": null,
+      "dataset": {
+        "name": "oi_v1",
+        "counts": {
+          "train": 276,
+          "val": 62,
+          "test": 62
+        },
+        "fingerprint_train": "ea91c1ad4241bfd1",
+        "fingerprint_val": "a194507fe6ebe1cb",
+        "fingerprint_test": "76da57fbbf513840"
+      },
+      "params": {
+        "base_weights": "yolov8n.pt",
+        "epochs": 8,
+        "imgsz": 640,
+        "batch": 8,
+        "device": "cpu"
+      },
+      "created": "2026-10-20T14:22:41",
+      "benchmark": "76da57fbbf513840",
+      "metrics": {
+        "recall": 0.5982905982905983,
+        "precision": 0.8860759493670886,
+        "ap50": 0.579707224146107,
+        "map50_95": 0.3751575519858383,
+        "count_mae": 0.7741935483870968
+      },
+      "status": "rejected"
+    }
+  },
+  "champion": "v0"
+}

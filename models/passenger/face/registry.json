@@ -1,0 +1,96 @@
+{
+  "models": {
+    "v0": {
+      "weights": "models/passenger/gender_net.caffemodel",
+      "base": null,
+      "classes": null,
+      "dataset": {
+        "name": "pretrained (Levi-Hassner, Adience)"
+      },
+      "params": {
+        "kind": "levi_hassner",
+        "model_dir": "models/passenger",
+        "decision": {
+          "teen_weight": 0.0,
+          "child_threshold": 0.95,
+          "min_conf": 0.6
+        }
+      },
+      "created": "2026-10-20T14:46:44",
+      "benchmark": "76da57fbbf513840+ffd0cfac28n3000s0",
+      "metrics": {
+        "gender_acc": 0.7416666666666667,
+        "child_auc": 0.8839163586933435,
+        "cls_macro_f1": 0.3324808679647389
+      },
+      "status": "retired"
+    },
+    "v1": {
+      "weights": "models\\passenger\\face\\v1\\best.pt",
+      "base": null,
+      "classes": null,
+      "dataset": {
+        "name": "fairface_hf_025",
+        "rows_train": 84115,
+        "rows_holdout": 2629,
+        "benchmark_file": "validation (never trained on)"
+      },
+      "params": {
+        "epochs": 4,
+        "batch": 128,
+        "lr": 0.002,
+        "seed": 0,
+        "pretrained": true,
+        "input": 112,
+        "decision": {
+          "teen_weight": 0.5,
+          "child_threshold": 0.4,
+          "min_conf": 0.5
+        },
+        "tuned_on": "train+val"
+      },
+      "created": "2026-10-20T15:57:12",
+      "benchmark": "94806531e8d324b4+ffd0cfac28n3000s0",
+      "metrics": {
+        "gender_acc": 0.9003333333333333,
+        "child_auc": 0.9880039080752729,
+        "cls_macro_f1": 0.494990395174204
+      },
+      "status": "retired"
+    },
+    "v2": {
+      "weights": "models\\passenger\\face\\v2\\best.pt",
+      "base": null,
+      "classes": null,
+      "dataset": {
+        "name": "fairface+utkface (20852 UTKFace rows)",
+        "rows_train": 39614,
+        "rows_holdout": 1238,
+        "benchmark_file": "validation (never trained on)"
+      },
+      "params": {
+        "epochs": 3,
+        "batch": 64,
+        "lr": 0.0005,
+        "seed": 0,
+        "pretrained": true,
+        "input": 112,
+        "decision": {
+          "teen_weight": 0.25,
+          "child_threshold": 0.3,
+          "min_conf": 0.5
+        },
+        "tuned_on": "train+val"
+      },
+      "created": "2026-10-21T21:30:40",
+      "benchmark": "94806531e8d324b4+ffd0cfac28n3000s0",
+      "metrics": {
+        "gender_acc": 0.898,
+        "child_auc": 0.9886548999617688,
+        "cls_macro_f1": 0.5165647985082358
+      },
+      "status": "champion"
+    }
+  },
+  "champion": "v2"
+}

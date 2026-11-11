@@ -185,7 +185,8 @@ def main() -> None:
         hub = TelemetryHub(args.driver_id, args.vehicle_id)
         if logger:
             hub.session_id = logger.session_id
-        webui = WebUI(hub, host=args.ui_host, port=args.ui_port, db_path=str(cfg.logging.db))
+        webui = WebUI(hub, host=args.ui_host, port=args.ui_port, db_path=str(cfg.logging.db),
+                      passenger_url=f"http://127.0.0.1:{cfg.passenger.server.port}")
         webui.start()
         print(f"[EagleEye] command deck: {webui.url}")
         if not args.headless and not args.no_browser:
@@ -203,6 +204,7 @@ def main() -> None:
     running = True
     want_snapshot = False
     warned_low_fps = False
+    no_frame_since = 0.0
 
     overlay = (None, None, [])      # latest (landmarks, pose, detections) for the renderer
     renderer = None
@@ -223,7 +225,16 @@ def main() -> None:
         while running:
             ok, frame, ts = stream.read()
             if not ok:
-                break
+                if stream.is_file:
+                    break
+                # A live webcam can take several seconds to deliver its first frame (or hiccup later);
+                # quitting on the first miss took the whole dashboard down with it.
+                no_frame_since = no_frame_since or time.perf_counter()
+                if time.perf_counter() - no_frame_since > 20.0:
+                    print("[EagleEye] ERROR: no frames from the camera for 20 s - is another app using it?")
+                    break
+                continue
+            no_frame_since = 0.0
 
             t0 = time.perf_counter()
             signals, result = pipeline.process(frame, ts)
@@ -232,8 +243,7 @@ def main() -> None:
                     result.state.value
                     if hasattr(result.state, "value")
                     else str(result.state)
-                )
-
+                ) 
                 if current_state != previous_state:
                     send_to_pico(current_state)
                     previous_state = current_state

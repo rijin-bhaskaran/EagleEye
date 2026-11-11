@@ -1,0 +1,371 @@
+stem,split,origin,reason
+firas__IMG_1030,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1050,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1052,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1069,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1070,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1071,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1072,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1073,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1075,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1078,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1080,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1082,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1083,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1085,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1086,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1087,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1088,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1091,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1093,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1095,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1098,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_110,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1101,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1103,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1106,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1108,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1110,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1111,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1117,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1118,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1119,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_112,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1121,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1122,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1123,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1124,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1125,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1126,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1128,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_113,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1131,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1132,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1134,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1137,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1141,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1142,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1144,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1145,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1146,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1148,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1151,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1157,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1158,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_116,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1163,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1166,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1168,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_117,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1170,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1171,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1172,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1173,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1175,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1176,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1177,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1178,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1179,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1188,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1189,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_119,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1191,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1192,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1195,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1198,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1200,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1202,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1203,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1205,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_121,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1211,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1212,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1215,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1216,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1217,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1219,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1220,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1222,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1224,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1225,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1228,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1230,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1238,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1239,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1240,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1243,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1244,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1245,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1246,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1247,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1248,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1249,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1252,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1253,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1254,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1255,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1265,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1267,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1268,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1289,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1290,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1291,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1292,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1302,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1303,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1305,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1309,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_131,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1310,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1311,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1312,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1316,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1318,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1319,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1320,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_1321,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_133,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_80,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_81,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_813,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_814,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_817,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_82,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_827,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_83,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_834,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_842,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_845,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_849,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_850,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_851,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_854,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_855,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_856,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_857,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_858,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_859,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_861,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_862,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_863,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_864,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_866,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_867,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_869,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_870,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_872,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_874,val,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_875,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_876,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_877,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_878,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_879,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_881,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_882,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_883,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_884,test,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_957,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+firas__IMG_958,train,firas,firasmahdi: may be 180-degree rotated variant (no border to detect); ~30% boxes loose per audit
+habbas__-s4-101-_mp4-72_jpg.rf.e0892313e7c48fc4b28a0b8122d23ee3,train,mp4,large box >35% of image (loose shoulder-to-waist?)
+habbas__-s4-92-_mp4-50_jpg.rf.083d40eae2fb7e1640f18e4fc56eb815,train,mp4,large box >35% of image (loose shoulder-to-waist?)
+habbas__0017cb8969dd1e9d_jpg.rf.7feb056462c95c94679c727a98268d92,test,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__00d00cbb3fca73a9_jpg.rf.aeea27c4b2aef8589fe56d9c52add1bb,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__06be932c4d6b7bf8_jpg.rf.fc81f05ca2dfc341033ea1a981cc16f2,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__098f870aeb596372_jpg.rf.77398dae9a406c0268f16f6d83bad22e,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__0c077031873837db_jpg.rf.325dc09cf7901ee4438e8026ed4d3a4a,train,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__0df6d3047860924f_jpg.rf.b5651566f4ea123a8ad2c917723f78e9,train,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__0f46eebbde6dce81_jpg.rf.b8be873f2f300961332966664932f1ef,train,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__0fc905e98b454644_jpg.rf.a779bb43d5f07568e50dec68ab71e520,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__14754c331734e706_jpg.rf.d4b61f32c4e176c82da9dc680563df71,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__1512aed351d231f7_jpg.rf.499189533ac948604f1a580200421c43,val,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__20b5771da7b33d0d_jpg.rf.e6be3a8d2fae9791281dfcad8a6b1ab8,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__263c9e9e2025afd0_jpg.rf.2fa5edca65b4a9dbdfbf54e90e474b44,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__26eea5f87fd6da98_jpg.rf.a3f9c7332b020f953577051845a414b9,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__2d218e9f5eaddbe1_jpg.rf.21815670d8cd0223a764e5ac29abddf4,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__33f9b96a924f5c81_jpg.rf.206a310433ab33a2da87cd3a6726a146,train,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__3d6409b6b6bf67d0_jpg.rf.c4c97a6d546fd8c3b3d161ce967399c0,train,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__4b8f2448e5e9c90f_jpg.rf.9a1e64083a675c516499b254672b892e,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__88ffc6b6abfbdc0d_jpg.rf.374c01a5bda6535dddfa7142d5de6891,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__8ed5d85944410155_jpg.rf.a9104fbc05ad2510a90820f247d8a7de,test,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__9b5b8f9e42c0462f_jpg.rf.2c10e88abd52123e756c4191f36c38b3,train,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__a015001d8e55d04a_jpg.rf.8d0cfc6c8a54e52723f8912092e486e6,val,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__a0ffe4b21f1c7d57_jpg.rf.83accced9a62a3557dbf52336267a931,train,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__a4c8a22a629c9dee_jpg.rf.2d6968e8625310cc211ff6d7ced9d0e2,test,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__b3e9ae864d416c39_jpg.rf.b0268ffb112c1acaa4086b0c279482ab,val,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-101-_jpg.rf.329c885be69b7c5a81970a3cb806c882,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-105-_jpg.rf.2576847f0941cabd3114f500cafefef5,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-106-_jpg.rf.a4ae3be918d3a63277db98e3cd2f0031,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-113-_jpg.rf.c36b3e5595ebd6bdf7c9c2412c5eac53,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-12-_jpg.rf.ed9de2ecae8984c6b7bddaf208992630,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-120-_jpg.rf.81bd8fd3cb574d2a4233614abdb3636a,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-124-_jpg.rf.c0a6476e25c74617d92226fe3ea186db,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-125-_jpg.rf.e74b7222b303b7986dd3f048b3927bf7,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-126-_jpg.rf.e5d2f59be6620fc947e10b2513420583,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-127-_jpg.rf.624ee58ee77da80eee4159522c6881cc,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-131-_jpg.rf.0335cb6cadf0923ed2abdd6596dfdac0,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-132-_jpg.rf.939330029dabeb706d7d9b8bd85517c9,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-135-_jpg.rf.694c67bdd47d86646bfa19b1d5edc907,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-142-_jpg.rf.c5f688498d3415b8d2b46968e0a36565,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-180-_jpg.rf.0463532af8e4a0fc9d918d15c9b50304,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-182-_jpg.rf.5d6dfceeab8083c5729860a1135dc236,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-205-_jpg.rf.7c2412045bea91716cd62bfd4a442f08,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-209-_jpg.rf.55605eecb7668b06ea5ada765c37fdba,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-215-_jpg.rf.f90720d64250bfd78dd50bd90b10f01d,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-22-_jpg.rf.626228ac5c38b8fb7bb5238fb006c917,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-227-_jpg.rf.50bbf51d8e306398821b466fa856d9ce,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-232-_jpg.rf.5f5cfb2896664e5838f888081e560edf,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-242-_jpg.rf.429d6dcd64e1f330ae5ddd6ee59c5fc2,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-25-_jpg.rf.aaa7056a50b088eafcc66e50ba048b16,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-250-_jpg.rf.ba8ce099101ed30aa8e7603caa998720,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-259-_jpg.rf.6e7746e4e99d970b3eb053ef2d4f5fc2,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-262-_jpg.rf.b734ebb2ec14857d524524d7cc751f16,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-266-_jpg.rf.c500442135bdf633c77d17c059ca3bf6,test,web_grey_copy,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__c_-275-_jpg.rf.397ee8ecf333f320f0d11f78d06d7f5d,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-29-_jpg.rf.572dd1d1bbd9381ff2f147d017d7cb74,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-290-_jpg.rf.22f42657ad42f1c2d000c451163d3664,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-298-_jpg.rf.eee5ed76c98725c5be8debaf05ae9c5b,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-31-_jpg.rf.ea7fc5b31c2f9b0be9b576a00ccc7800,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-311-_jpg.rf.7b57532edfd21b5164498005d0900f55,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-316-_jpg.rf.416a7fca859f575a7d19950a4152a9b4,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-319-_jpg.rf.e825f3431c35d2ad1f35ee1e496d0b37,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-331-_jpg.rf.d02c63055b194646703e7d3ebac9c3ac,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-332-_jpg.rf.bd4e020b2b1d3b03d673304d3359fba1,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-350-_jpg.rf.f400d940f85c5e77c7964c2271acc32d,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-354-_jpg.rf.7f2fbbc3fb9a1416bfdf27b9d3f9d93b,train,web_grey_copy,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__c_-355-_jpg.rf.8433af72226192e78f40b5bb8d668f30,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-366-_jpg.rf.c58c4ce3b4f01b760e3d9d6645589d72,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-373-_jpg.rf.51633d867e02b490f1c63faaafe8d21e,test,web_grey_copy,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__c_-42-_jpg.rf.b371126cc8286d04c426efeab24cc14f,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-53-_jpg.rf.fb3d3b47883a9c3a30ff9b2004f752ce,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-56-_jpg.rf.e5f57a0382cb0627a19915c586fe5c5a,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-61-_jpg.rf.65053467c5db081f0dc247ffd915ffd1,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-78-_jpg.rf.ebe6f31e4f7820567db8ed09ab2358be,test,web_grey_copy,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__c_-8-_jpg.rf.6c508a62dcce6c10e79b5fb616b8df1c,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-83-_jpg.rf.4a8d0cdfa510bfcfad15d8c2db426935,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__c_-90-_jpg.rf.1a5a47ff4d6ad88be9f9c51457d15747,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__d086c4ce46e0dda3_jpg.rf.651b8ec92d1433776ee270251a4a9142,train,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__d251712050c26f45_jpg.rf.7b5fe349936bf7a3e096346154b50c2e,val,web_other,large box >35% of image (loose shoulder-to-waist?)
+habbas__d781c5fcc5c87b63_jpg.rf.052f6448d0cb6aa9d30e692ad02d6d4f,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__e92a1954130a2766_jpg.rf.16775e204d4c3c04f5415716e2b9d70c,val,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__f96d406afd332e7c_jpg.rf.baca82937e059a36e51c5ac8e0de1a08,train,web_other,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__gray-02DGTEKPCUTT_jpg.rf.2d4fb9e9aeeefa8f2ecf9ce3e4e7cc44,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-0Q35D27AWRXL_jpg.rf.23287611ba4035cd0b099a485f219a7f,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-0ZMZEJGO9VH2_jpg.rf.fea537e05b52daf7d51cc421f06a893d,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-119E1NCWYY2Z_jpg.rf.71e6c7407ac07487296ef44fb633dcd7,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-13Q8QCN2CHB4_jpg.rf.465a48c8f9cd9b66e3abb7f912d8e330,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-1DG91KDCF2SW_jpg.rf.9ee69a54ea3ed339fc4427bf14568c80,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-1O278Q8KIF19_jpg.rf.4103ebb0b7e235200378565871ce7e05,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-2AJHGQDASN4K_jpg.rf.a2bfb6dce3c06cb3919ac3897a90f61a,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-2HKLAEPUO3FA_jpg.rf.42890577c5662e35f7b02e41ce4a7ad5,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-2JF6S9XTE7HM_jpg.rf.daa4eb9ee92ef6dae21101aac24aa0d7,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-2T3M2ROM6ZEV_jpg.rf.d2c5c1331fa54c9d34ae6167fe065281,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-2VPF3A2RWUVO_jpg.rf.c954f69da3eebf712997757abda355b6,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-39C2E3LW151L_jpg.rf.49596d9cf8dfa9ae73ff4565dbd20d46,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-3AP2YJNYZUHI_jpg.rf.426415db5fc5d47a97cb66d7f0aed5b3,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-3FI58DC5GY0Q_jpg.rf.fb2d87f7eb671808a4027eee2e9a315f,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-3K41WGU6FSQ0_jpg.rf.29dbcc2e2295ce3bdda1e9af73f4cbca,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-3U4FHQCBW9ZX_jpg.rf.2623a98e1fc5d2fa7940fddac51850d7,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-3VWNPZUNRIK6_jpg.rf.d12b4bf5c54d3e0fcef23705e6b02564,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-41G45O9M46R7_jpg.rf.0bb9e3d6d3a4e1df20db1496b03d5571,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-4BGSW264ZP87_jpg.rf.687bc8d580a0ad2fc2bf7211ceae1771,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-4IXR0Q57IO0U_jpg.rf.8b1360400e0fac5040125ff8ed46740d,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-4ST2P01HY0Q4_jpg.rf.613d43ea2caaac359ed3ffe4b84e8641,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-5DZIOKA4RJ72_jpg.rf.95213f3a7e7671ddeb2ebcb060a4e1d5,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-5XEFFVTZAVOR_jpg.rf.f094a56c3a883447ea6441a6cd254de9,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-5YFHWTLOM58N_jpg.rf.8e6df0c5424fcaf0cb4ad2d8ebb92f5f,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-64F5OCJTCTDI_jpg.rf.bd010e0d8ddc872fd59990dda07f03e4,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-6CUG1OGP0GXC_jpg.rf.1f712decaf063fa1503028d74882cc80,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-6Y30VQPEW6D0_jpg.rf.d3af291163bfba34c435583510ef015e,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-6ZCIFSG4XB8F_jpg.rf.42300fccba9ddc402659f742dfe713ab,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-7D4KWXUZOVHC_jpg.rf.a7ba9595ea4669f0914de7c577872d9a,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-7P1OHO44W674_jpg.rf.77ec853a0fd271f1579a751ce5f77cc5,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-7TC20DIYFHSE_jpg.rf.5f0c50cdf93d90f596d17c1f2915ae19,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-7ZK6KKMOYXWQ_jpg.rf.7e527fbe7f0bd8b01dd02fd133c3fb95,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-82OQL641848Q_jpg.rf.d9a7661fe363697b95181e3f76242962,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-86F0AQT3Y5QL_jpg.rf.9b67d4dfb3921205e2cd80c544ff29db,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-87WAUNP9I84X_jpg.rf.e3a9dc173e4c83a043a6244e8541ed0f,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-8F5C1KJ0CW2W_jpg.rf.06f14ddf55e54c167241525ea158a53d,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-8LC4SMP2UKR6_jpg.rf.9375b99a12a74449a921ddd40ac1eb06,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-8NIPYX4IHG7O_jpg.rf.cc70ac3c474c6d5aa297f64b067669ce,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-8XNNAD2R3SE4_jpg.rf.330eb07fcf6749cc573e25043d3e5e89,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-93LY12753IQN_jpg.rf.09991f32a39e12cde95f04c00b83bdfd,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-9AKZ9T1NCDJ0_jpg.rf.3f65d3dedb4d2f8d5f4d677b5634e526,train,web_grey_copy,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__gray-9KIC884MGWU4_jpg.rf.cb3d4ec4c49ffbce53caeac18bbfb4fe,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-9Z0HALWDUQ2U_jpg.rf.8f4b7c415d08749c42f005e8448aa1c8,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-A7M5579IILT1_jpg.rf.26370c184812e4d038bd87237b4ef3e3,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-ABUPGPRP9TFG_jpg.rf.f0b8293019c2f372150b33e2c716e550,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-AD75OK5HW3DA_jpg.rf.49cbfdd742f213539d254a867278cba5,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-APO0ZEH17JGY_jpg.rf.554c8acc4a6a71b435507afa72711295,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-AQSEU71E1CKZ_jpg.rf.dc6f76f6867b5ec05fb212b4d38ec43d,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-AXHTBH9XH5H8_jpg.rf.228449d0ef6ecec14e6a81d8fa0d36ce,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-AXPCFJW9FRGL_jpg.rf.1ab773e9586b69e70f0fca3821207441,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-B1MUZW9DK9KW_jpg.rf.bbb2ac595bee5f6ada6b7880d147f095,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-BFSHKUX71S7D_jpg.rf.dd40974e767f8a8d77579cbf96a6a64d,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-BI6QI1XQTY47_jpg.rf.0bbc4c94f9072ae73d08f64520020279,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-BQZNR0NTZNJU_jpg.rf.c63682249c1b8d73014df17657c29514,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-CB8UZVG1O16F_jpg.rf.f9f22af7fc7a48809251cb57f3bebc27,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-CGE0ABE1W9J5_jpg.rf.ae815e140cef34be51f481de5d6b9e3f,train,web_grey_copy,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__gray-DGU8505YWVHY_jpg.rf.072c5a0c42fdb9b49a78c7fc027008fd,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-DIQ4JE09RPOW_jpg.rf.9517748d0e51414b87936d04b37efd63,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-DWEP3RODLJ1Y_jpg.rf.dad1b6eedf2338105d6fc64b7945ff56,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-E6RIVYFOKXVY_jpg.rf.55b66579ddbb6a3c9ac47c00af5843b2,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-EF9EVHXZTZZ8_jpg.rf.af476ec24654560c00e5b61343bdd140,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-F14D1UW054XZ_jpg.rf.8851574f10685d5494fdc67d84a6d659,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-FN2WKKBWO2CZ_jpg.rf.47be03c78f3097e4a135e569ecf10d5e,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-GBOHGYBHD5FJ_jpg.rf.6cc15150c6be0b0e7016c174097cd820,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-GMDI7N4R0904_jpg.rf.5b7e49dde6fb4926f8a342e90dbd9e69,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-HM7QVUII2X2N_jpg.rf.7567a5fb619eda541de0a5cc97ee423d,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-IDQO96W8TSEN_jpg.rf.8bdea7db0a8bf228b0c258f21e870281,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-IOMN1AGJQYNM_jpg.rf.e31b9f4da3d44585cc536f54f9f076e3,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-IPNYMDNNJNBV_jpg.rf.c6c3d170f1b494a49264d26b18583584,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-IZ3M6TM0C6OF_jpg.rf.c65d75f1f13766955753d921ed717dd6,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-JQ4ELBKHQYTU_jpg.rf.c75d636770d465a30d1e1fccbd8af4ea,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-JRP1PTN3WOLJ_jpg.rf.b42a8123004eb207c4a4753cb13d6c05,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-JUQWFKZAP5LQ_jpg.rf.18b1ecdb85d1d6b9b24bf6520620d889,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-K4H14UTP343A_jpg.rf.f82e939b4dba64c820eb32197c3db390,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-KZ0SBCB8APLN_jpg.rf.533ca4cd9fed7294a4be499a2002de60,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-L3X5YR46AZMU_jpg.rf.3eda64a86fe14d446de74b7a4142faa6,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-L887J9XAKRH9_jpg.rf.e5993969aafa72dc0ed777d7d7ef3bc6,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-LI4HSE4T7M9D_jpg.rf.f6efc12566837aa0fa6d79b954a5aa5f,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-LMNDYTR2OV7P_jpg.rf.9f3e8ece4436fd26344efbc72b0a98af,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-LUPKARU6WR1S_jpg.rf.72ae6494ae1461f073fabdc7f747f50f,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-MRA0SEABLCWU_jpg.rf.134d1b39a970e2042dcc230e7ab1f143,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-NRQ2BLJ7EQYJ_jpg.rf.7565e07c1312bbb5482ae1d06c67f542,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-NWR8N3WA0UME_jpg.rf.ad57becdefa263b917fd24320c50eed6,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-ODXJZ4PJJYSX_jpg.rf.3f38173b1af19b143703ff8246343180,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-OEK2OUUEGP9D_jpg.rf.3ba0dd644b8cfddea5f7926dba9e314a,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-OVB0O6JCFMKL_jpg.rf.cf86b1a8fefa11f7aaeb2751df786aa8,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-Q34PCYP88DVD_jpg.rf.a0a16463846d06d87ae39cf103123eca,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-Q77KS5IWBC3B_jpg.rf.67d046bb650581cf7fcc18acfd99dd2b,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-Q8DHUAGFS33U_jpg.rf.f8c5a4979ef253463a5ec058df1c3cbe,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-QGBV8GYYCLEA_jpg.rf.8cf4eb52f498fea8a50dd62a155c154a,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-QIP1C1074BZA_jpg.rf.c4883ff248bcf882f236c6ed9ea85a36,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-RZWGZB7QEFTT_jpg.rf.308c426bd0385f6ea637bb27d1e6db3e,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-SPMPCGY4MVS7_jpg.rf.8fb108bbadd2e48cc1f017a8bb422608,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-SZ4530K2UXOV_jpg.rf.8d951ea5cbad0e559b38cb34c56b1fee,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-TGG7KXTCFVGN_jpg.rf.e0a3df558f83475744819485ca0beaee,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-U5ZKTYUKN047_jpg.rf.02056e0429e67e090a9b32633fbaea10,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-U7GJF6DFLADI_jpg.rf.7e37e7f9b04ebb7b2b407949b17a8be8,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-U7KDUM4ISPVU_jpg.rf.6609fead2e098643b1cc04a47d513562,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-UL3FUQ78I1H2_jpg.rf.6f07bf9fe7717ec4f1a8ab707c62cff1,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-UT53DP2M8OKH_jpg.rf.9092f894bc54c6ae990426c918072597,train,web_grey_copy,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__gray-UW124Z2X66GX_jpg.rf.c4cf323def2f00bcb95de9c4ddc7ed47,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-V5CQHPEJXLO1_jpg.rf.afa505c7096287793a136f74d02c0ab6,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-V9PLG1PZBB34_jpg.rf.164bca3b9453ecd15553a24116e09786,train,web_grey_copy,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__gray-WCCDRPMZFSLU_jpg.rf.677df48b1c650a61b8abeadcd81fbdf6,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-WF0MB0WVMPKE_jpg.rf.b708a7527fead04415af6674db9482c0,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-WMT0SMY8NVKG_jpg.rf.abbfa103781847b727e1cb59450dcaa2,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-WQYGFZ1PRO6E_jpg.rf.e6b4881eb4cc75317a136ce4f135e222,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-X3H5UA2YI6AV_jpg.rf.3d29080fe7d4662586aae5390b049e7f,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-X3T4BLAEZDQB_jpg.rf.50042178212991a226aaedeb7054b29f,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-X7EP8XRJ7QM5_jpg.rf.f4789e440bbcf16b15d36f16317669f9,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-XIWXNWBACWEQ_jpg.rf.032b6a7131e5e019ad5cea2ce4ee0475,val,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-XLGZNADPWFC4_jpg.rf.86fd2c01ec64bd77293bec075d35b290,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-XNE8MC9DOKKU_jpg.rf.ecf01fbd0a1bff8e205d7a445fdbc214,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-Y19WGJ01W10L_jpg.rf.92b75ffedc53624fb9e8339a701b4e4b,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-Y4UDO051WD7G_jpg.rf.1cd89a4f2bf2473b8ad2382b5788ab54,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-Y5AGS5MY0C00_jpg.rf.aeca9b39a7bdb954943a742655b1bc76,train,web_grey_copy,3+ belt boxes (empty-seat harness / one box per belt?)
+habbas__gray-YRYVP9J642F0_jpg.rf.632f948839a241705370d9e9913b9977,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-Z21K64XSU0MJ_jpg.rf.5151eb6ed134bdf0d4fea00b6496ebdf,test,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-ZO0IVH2KJQHI_jpg.rf.f07ae717126c7e5a2fa80fe8240bdf51,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)
+habbas__gray-ZT5IKF32WYBX_jpg.rf.d16eb3934a94401a1859661071229735,train,web_grey_copy,large box >35% of image (loose shoulder-to-waist?)

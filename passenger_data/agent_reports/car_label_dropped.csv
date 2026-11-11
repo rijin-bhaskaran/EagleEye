@@ -1,0 +1,12 @@
+video_id,frame,split,reason
+0d5c2bc781,0d5c2bc781_000238,train,"a 4th person (toddler) is visible behind the driver: only partly visible, box would be a guess"
+0d5c2bc781,0d5c2bc781_000250,train,"a 4th person (toddler) is visible behind the driver: only partly visible, box would be a guess"
+0d5c2bc781,0d5c2bc781_000263,train,"a 4th person (toddler) is visible behind the driver: only partly visible, box would be a guess"
+0d5c2bc781,0d5c2bc781_000275,train,person track lost (woman): box missing or person hidden/leaving
+0d5c2bc781,0d5c2bc781_000338,train,person track lost (boy): box missing or person hidden/leaving
+0d5c2bc781,0d5c2bc781_000350,train,person track lost (boy): box missing or person hidden/leaving
+0d5c2bc781,0d5c2bc781_000425,train,person track lost (woman): box missing or person hidden/leaving
+0d5c2bc781,0d5c2bc781_000438,train,person track lost (woman): box missing or person hidden/leaving
+0d5c2bc781,0d5c2bc781_000538,train,person track lost (woman): box missing or person hidden/leaving
+cb4b6c5151,cb4b6c5151_000600,train,"rear passenger leaving the frame (partial, box unreliable)"
+cb4b6c5151,cb4b6c5151_000613,train,"rear passenger leaving the frame (partial, box unreliable)"

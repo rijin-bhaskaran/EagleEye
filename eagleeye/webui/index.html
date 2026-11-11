@@ -114,6 +114,7 @@
     .flashing { animation: eagle-flash 0.9s ease-in-out infinite; }
     .view[hidden] { display: none; }
     #feed { width: 100%; height: 100%; object-fit: cover; display: block; }
+    #paxFeed { width: 100%; height: 100%; object-fit: cover; display: block; }
   </style>
 </head>
 <body class="min-h-full font-sans text-slate-800 antialiased selection:bg-coral-400 selection:text-slate-900 relative">
@@ -419,6 +420,51 @@
   </div>
   <span id="riskLabel" class="inline-block rounded-full bg-slate-100 px-3 py-1 text-center text-xs font-semibold text-slate-700 ring-1 ring-slate-300/60">—</span>
 </div>
+</div>
+</section>
+
+<!-- Passenger cabin: second camera, its own process, proxied through this server -->
+<section id="passengerPanel" class="grid grid-cols-1 gap-4 transition-opacity xl:grid-cols-3" data-purpose="passenger-monitoring">
+<div class="liquid-card flex flex-col overflow-hidden rounded-2xl p-4 shadow-sm ring-1 ring-white xl:col-span-2">
+  <div class="mb-2.5 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="relative flex h-2 w-2"><span class="relative inline-flex h-2 w-2 rounded-full bg-slate-700"></span></span>
+      <span class="text-[11px] font-bold uppercase tracking-wider text-slate-800">Passenger Cabin Feed</span>
+    </div>
+    <span id="paxStatus" class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 font-mono text-[9px] font-semibold text-slate-700 ring-1 ring-inset ring-slate-300/60">CONNECTING</span>
+  </div>
+  <div class="relative aspect-[16/9] min-h-[220px] w-full overflow-hidden rounded-xl border border-slate-700/60 bg-[#202126] shadow-inner">
+    <div id="paxFeedSlot" class="absolute inset-0"></div>
+    <div id="paxOffline" class="absolute inset-0 z-10 flex items-center justify-center bg-[#202126]/90 px-6 text-center text-xs font-medium text-slate-300">
+      Passenger monitor is not running. Start it with <span class="mx-1 font-mono text-white">python run_all.py</span> or <span class="mx-1 font-mono text-white">python run_passenger.py</span>.
+    </div>
+    <div class="pointer-events-none absolute inset-x-3 top-3 z-20 flex items-center justify-between">
+      <div class="rounded-md bg-slate-900/80 px-2 py-0.5 ring-1 ring-white/10 backdrop-blur-sm"><span id="paxMode" class="font-mono text-[9px] font-semibold tracking-wide text-slate-200">CAM_02</span></div>
+      <div id="paxFps" class="rounded-md bg-slate-900/80 px-2 py-0.5 font-mono text-[9px] font-medium text-slate-300 ring-1 ring-white/10 backdrop-blur-sm">—</div>
+    </div>
+  </div>
+  <div class="mt-2.5 flex items-center justify-between font-mono text-[10px] text-slate-500">
+    <span>Latency: <strong id="paxLatency" class="font-mono text-slate-700">—</strong></span>
+    <span>Labels: <strong id="paxClassifier" class="font-mono text-slate-800">—</strong></span>
+  </div>
+</div>
+
+<div class="flex flex-col gap-4">
+  <div class="grid flex-1 grid-cols-3 gap-3">
+    <div class="liquid-card flex flex-col justify-center rounded-2xl p-4"><div class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Passengers</div><div id="paxCount" class="mt-2 font-mono text-2xl font-bold text-slate-900">—</div></div>
+    <div class="liquid-card flex flex-col justify-center rounded-2xl p-4"><div class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Occupied</div><div class="mt-2 flex items-baseline gap-1"><span id="paxOccupied" class="font-mono text-2xl font-bold text-slate-900">—</span><span class="font-mono text-[10px] text-slate-400">/ <span id="paxTotal">—</span></span></div></div>
+    <div class="liquid-card flex flex-col justify-center rounded-2xl p-4"><div class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Vacant</div><div id="paxVacant" class="mt-2 font-mono text-2xl font-bold text-slate-900">—</div></div>
+  </div>
+  <div class="liquid-card flex flex-1 flex-col justify-center rounded-2xl p-4">
+    <div class="flex items-center justify-between text-xs"><span class="font-semibold uppercase tracking-wider text-slate-500">Seat occupancy</span><span id="paxOccPct" class="font-mono font-bold text-slate-700">—</span></div>
+    <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-200/70 p-0.5"><div id="paxOccBar" class="h-full rounded-full bg-gradient-to-r from-coral-400 to-coral-600" style="width: 0%"></div></div>
+    <div class="mt-3 grid grid-cols-4 gap-2 text-center">
+      <div><div class="text-[10px] uppercase tracking-wider text-slate-400"><span class="mr-1 inline-block h-2 w-2 rounded-sm" style="background:#2F80ED"></span>Male</div><div id="paxMale" class="font-mono text-lg font-bold text-slate-900">—</div></div>
+      <div><div class="text-[10px] uppercase tracking-wider text-slate-400"><span class="mr-1 inline-block h-2 w-2 rounded-sm" style="background:#FF4FA3"></span>Female</div><div id="paxFemale" class="font-mono text-lg font-bold text-slate-900">—</div></div>
+      <div><div class="text-[10px] uppercase tracking-wider text-slate-400"><span class="mr-1 inline-block h-2 w-2 rounded-sm" style="background:#22B14C"></span>Child</div><div id="paxChild" class="font-mono text-lg font-bold text-slate-900">—</div></div>
+      <div><div class="text-[10px] uppercase tracking-wider text-slate-400"><span class="mr-1 inline-block h-2 w-2 rounded-sm" style="background:#9A9AA5"></span>Unknown</div><div id="paxUnknown" class="font-mono text-lg font-bold text-slate-900">—</div></div>
+    </div>
+  </div>
 </div>
 </section>
 
@@ -777,6 +823,47 @@
   feed.src = "/video";
   $("feedSlotCockpit").appendChild(feed);
 
+  /* ---------- passenger cabin feed + telemetry (second camera, separate process) --- */
+  const paxFeed = document.createElement("img");
+  paxFeed.id = "paxFeed";
+  paxFeed.alt = "Passenger cabin camera feed";
+  $("paxFeedSlot").appendChild(paxFeed);
+  let paxOnline = false;
+
+  function setPax(online, label) {
+    $("paxStatus").textContent = label;
+    $("paxOffline").style.display = online ? "none" : "flex";   // inline: beats Tailwind's .flex
+    $("passengerPanel").classList.toggle("opacity-70", !online);
+    // Open the MJPEG stream only while the monitor is up; reopen it after any outage.
+    if (online && !paxOnline) paxFeed.src = "/video/passenger?t=" + Date.now();
+    if (!online && paxOnline) paxFeed.removeAttribute("src");
+    paxOnline = online;
+  }
+
+  async function pollPassenger() {
+    let data;
+    try {
+      data = await (await fetch("/api/passenger", { cache: "no-store" })).json();
+    } catch (err) { setPax(false, "OFFLINE"); return; }
+    if (!data || data.online === false) { setPax(false, "OFFLINE"); return; }
+    if (!data.text) { setPax(false, "STARTING"); return; }
+    if (data.age_s > 3) { setPax(false, "STALLED"); return; }   // process alive but not producing frames
+
+    for (const [id, value] of Object.entries(data.text)) {
+      const el = $(id);
+      if (el && el.textContent !== value) el.textContent = value;
+    }
+    for (const [id, value] of Object.entries(data.width || {})) {
+      const el = $(id);
+      if (el) el.style.width = value;
+    }
+    for (const [id, markup] of Object.entries(data.html || {})) {
+      const el = $(id);
+      if (el && el.innerHTML !== markup) el.innerHTML = markup;
+    }
+    setPax(true, "LIVE");
+  }
+
   /* ---------- view switching ------------------------------------------- */
   const views = ["cockpit", "trends", "camera", "incidents", "fleet"];
 
@@ -976,6 +1063,8 @@
   showView((location.hash || "#cockpit").slice(1));
   poll();
   setInterval(poll, POLL_MS);
+  pollPassenger();
+  setInterval(pollPassenger, 500);
 })();
 </script>
 </body>

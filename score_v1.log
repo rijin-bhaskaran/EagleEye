@@ -1,0 +1,119 @@
+Ultralytics 8.4.174  Python-3.12.10 torch-2.14.1+cpu CPU (12th Gen Intel Core i5-1235U)
+Model summary (fused): 72 layers, 3,006,038 parameters, 0 gradients, 8.1 GFLOPs
+[34m[1mval: [0mFast image access  (ping: 0.30.1 ms, read: 510.2282.5 MB/s, size: 388.6 KB)
+[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\val.cache... 215 images, 0 backgrounds, 9 corrupt: 100% ━━━━━━━━━━━━ 215/215  0.0s
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\val\20240131104217_84dfd8_58d6c59929.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\val\20240202080332_da709e_38023e6181.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\val\20240202102230_84dfd8_a2527b6ebb.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\val\20240202102230_84dfd8_bf0cc03da2.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\val\20240202102243_84dfd8_f196b7f635.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\val\20240205123907_9c47c3_b39e33e008.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\val\20240205123907_9c47c3_fc69cd4a83.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\val\20240205123937_9c47c3_ba8e531326.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\val\20240205130251_9c47c3_f7889ae67f.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 3% ──────────── 1/26 2.2s/it 0.7s<56.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 7% ╸─────────── 2/26 1.2s/it 1.3s<29.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 11% ━─────────── 3/26 1.1s/it 2.1s<24.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 15% ━╸────────── 4/26 1.1s/it 3.5s<25.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 5/26 1.1s/it 4.4s<22.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 6/26 1.1s/it 5.5s<21.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 26% ━━━───────── 7/26 1.1s/it 6.8s<21.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 30% ━━━╸──────── 8/26 1.1s/it 7.7s<19.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 9/26 1.1s/it 8.8s<18.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 10/26 1.0it/s 9.7s<15.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 11/26 1.1it/s 10.5s<14.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 12/26 1.1it/s 11.4s<12.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 13/26 1.1it/s 12.2s<11.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 14/26 1.2it/s 12.9s<9.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 15/26 1.3it/s 13.6s<8.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 16/26 1.3it/s 14.3s<7.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 17/26 1.3it/s 15.0s<6.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 69% ━━━━━━━━──── 18/26 1.4it/s 15.6s<5.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 73% ━━━━━━━━╸─── 19/26 1.4it/s 16.3s<4.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 20/26 1.5it/s 17.0s<4.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 21/26 1.5it/s 17.6s<3.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 84% ━━━━━━━━━━── 22/26 1.5it/s 18.2s<2.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 88% ━━━━━━━━━━╸─ 23/26 1.5it/s 18.9s<2.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 92% ━━━━━━━━━━━─ 24/26 1.5it/s 19.5s<1.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 96% ━━━━━━━━━━━╸ 25/26 1.5it/s 20.2s<0.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 26/26 1.2it/s 20.8s
+                   all        206       7669      0.856      0.774      0.809      0.415
+Speed: 1.1ms preprocess, 59.4ms inference, 0.0ms loss, 6.4ms postprocess per image
+Ultralytics 8.4.174  Python-3.12.10 torch-2.14.1+cpu CPU (12th Gen Intel Core i5-1235U)
+Model summary (fused): 72 layers, 3,006,038 parameters, 0 gradients, 8.1 GFLOPs
+WARNING [34m[1mval: [0mSlow image access detected (ping: 0.30.2 ms, read: 19.12.3 MB/s, size: 376.1 KB). Use local storage instead of remote/mounted storage for better performance. See https://docs.ultralytics.com/guides/model-training-tips
+[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 9 images, 0 backgrounds, 0 corrupt: 4% ╸─────────── 9/201 22.8it/s 0.1s<8.4s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 25 images, 0 backgrounds, 2 corrupt: 12% ━─────────── 25/201 63.6it/s 0.2s<2.8s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 41 images, 0 backgrounds, 4 corrupt: 20% ━━────────── 41/201 81.1it/s 0.4s<2.0s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 50 images, 0 backgrounds, 4 corrupt: 24% ━━╸───────── 50/201 82.8it/s 0.5s<1.8s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 57 images, 0 backgrounds, 4 corrupt: 28% ━━━───────── 57/201 76.7it/s 0.6s<1.9s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 65 images, 0 backgrounds, 4 corrupt: 32% ━━━╸──────── 65/201 74.0it/s 0.7s<1.8s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 79 images, 0 backgrounds, 4 corrupt: 39% ━━━━╸─────── 79/201 86.7it/s 0.8s<1.4s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 93 images, 0 backgrounds, 7 corrupt: 46% ━━━━━╸────── 93/201 102.1it/s 0.9s<1.1s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 107 images, 0 backgrounds, 7 corrupt: 53% ━━━━━━────── 107/201 109.9it/s 1.0s<0.9s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 127 images, 0 backgrounds, 9 corrupt: 63% ━━━━━━━╸──── 127/201 132.6it/s 1.1s<0.6s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 145 images, 0 backgrounds, 10 corrupt: 72% ━━━━━━━━╸─── 145/201 138.9it/s 1.2s<0.4s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 162 images, 0 backgrounds, 10 corrupt: 80% ━━━━━━━━━╸── 162/201 143.0it/s 1.4s<0.3s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 172 images, 0 backgrounds, 11 corrupt: 85% ━━━━━━━━━━── 172/201 127.3it/s 1.5s<0.2s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 180 images, 0 backgrounds, 11 corrupt: 89% ━━━━━━━━━━╸─ 180/201 112.1it/s 1.6s<0.2s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 194 images, 0 backgrounds, 13 corrupt: 96% ━━━━━━━━━━━╸ 194/201 112.9it/s 1.7s<0.1s[K[34m[1mval: [0mScanning C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test... 201 images, 0 backgrounds, 13 corrupt: 100% ━━━━━━━━━━━━ 201/201 117.2it/s 1.7s
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131110921_9c47c3_57de4e13fc.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131110921_9c47c3_8ecec4c01c.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131110930_9c47c3_82031df2ba.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131110930_9c47c3_cd0078de82.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131110958_9c47c3_589e0ca226.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131111017_9c47c3_6b597c9dfc.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131111017_9c47c3_d156fc1b79.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131120305_84dfd8_a81d6bb44c.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131165531_9c47c3_f66a3089b9.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240131171126_da709e_84f2232040.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240202135615_84dfd8_0d201efd7c.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240205140454_9c47c3_566dcc5f6d.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mC:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\images\test\20240205140504_9c47c3_5f1d536000.jpg: ignoring corrupt image/label: labels mix segment and detection rows
+[34m[1mval: [0mNew cache created: C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\seat_data\labels\test.cache
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ──────────── 1/24 3.3s/it 1.0s<1:16[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 2/24 1.6s/it 1.7s<36.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━─────────── 3/24 1.2s/it 2.5s<24.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 16% ━━────────── 4/24 1.0it/s 3.2s<19.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 20% ━━────────── 5/24 1.1it/s 3.9s<17.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 6/24 1.2it/s 4.6s<15.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━───────── 7/24 1.2it/s 5.4s<13.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 33% ━━━━──────── 8/24 1.3it/s 6.2s<12.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 37% ━━━━──────── 9/24 1.2it/s 7.0s<12.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 41% ━━━━━─────── 10/24 1.3it/s 7.7s<11.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 45% ━━━━━─────── 11/24 1.3it/s 8.5s<10.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 12/24 1.3it/s 9.2s<8.9s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 54% ━━━━━━────── 13/24 1.4it/s 9.9s<8.1s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 58% ━━━━━━━───── 14/24 1.3it/s 10.6s<7.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 62% ━━━━━━━───── 15/24 1.3it/s 11.4s<6.7s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 66% ━━━━━━━━──── 16/24 1.3it/s 12.1s<6.0s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 17/24 1.3it/s 12.9s<5.3s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 75% ━━━━━━━━━─── 18/24 1.3it/s 13.7s<4.5s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 79% ━━━━━━━━━─── 19/24 1.3it/s 14.5s<3.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 83% ━━━━━━━━━━── 20/24 1.3it/s 15.3s<3.2s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 21/24 1.3it/s 16.1s<2.4s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━━─ 22/24 1.2it/s 17.0s<1.6s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 23/24 1.2it/s 17.8s<0.8s[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 24/24 1.3it/s 18.2s
+                   all        188       7033      0.824      0.734      0.781      0.377
+Speed: 0.9ms preprocess, 53.8ms inference, 0.0ms loss, 5.5ms postprocess per image
+{
+  "split": "test",
+  "map50": 0.7813,
+  "map50_95": 0.3774,
+  "per_class": {
+    "Occupied": {
+      "precision": 0.8502,
+      "recall": 0.8482,
+      "ap50": 0.8491,
+      "ap50_95": 0.4371
+    },
+    "Unoccupied": {
+      "precision": 0.7972,
+      "recall": 0.6193,
+      "ap50": 0.7134,
+      "ap50_95": 0.3178
+    }
+  },
+  "operating_point": {
+    "conf": 0.317,
+    "f1_mean": 0.7742,
+    "f1": {
+      "Occupied": 0.8404,
+      "Unoccupied": 0.708
+    }
+  },
+  "counting": {
+    "frames": 201,
+    "overall": {
+      "Occupied": {
+        "mean_abs_error": 1.458,
+        "exact_share": 0.214
+      },
+      "Unoccupied": {
+        "mean_abs_error": 2.811,
+        "exact_share": 0.085
+      }
+    },
+    "per_recorder": {
+      "9c47c3": {
+        "frames": 144,
+        "Occupied": {
+          "mean_abs_error": 1.333,
+          "exact_share": 0.229
+        },
+        "Unoccupied": {
+          "mean_abs_error": 2.472,
+          "exact_share": 0.076
+        }
+      },
+      "84dfd8": {
+        "frames": 21,
+        "Occupied": {
+          "mean_abs_error": 1.571,
+          "exact_share": 0.238
+        },
+        "Unoccupied": {
+          "mean_abs_error": 2.952,
+          "exact_share": 0.143
+        }
+      },
+      "da709e": {
+        "frames": 36,
+        "Occupied": {
+          "mean_abs_error": 1.889,
+          "exact_share": 0.139
+        },
+        "Unoccupied": {
+          "mean_abs_error": 4.083,
+          "exact_share": 0.083
+        }
+      }
+    }
+  },
+  "speed_ms_per_image": {
+    "preprocess": 0.9,
+    "inference": 53.8,
+    "loss": 0.0,
+    "postprocess": 5.5
+  }
+}
+[train_seats] metrics C:\Users\RijinBhaskaran\Documents\Work Related\EagleEye\models\seat_state\v1\metrics.json

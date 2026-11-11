@@ -1,0 +1,179 @@
+{
+  "params": {
+    "data": "seat_data",
+    "base": "yolov8n.pt",
+    "epochs": "12",
+    "imgsz": "640",
+    "batch": "8",
+    "device": "cpu",
+    "patience": "4",
+    "target_map50": "0.9",
+    "fraction": "1.0",
+    "name": "v1",
+    "score_only": "models\\seat_state\\v1\\run\\weights\\best.pt",
+    "out": "models\\seat_state"
+  },
+  "note": "scored without finishing the training schedule",
+  "val": {
+    "split": "val",
+    "map50": 0.8087,
+    "map50_95": 0.4146,
+    "per_class": {
+      "Occupied": {
+        "precision": 0.8794,
+        "recall": 0.8302,
+        "ap50": 0.859,
+        "ap50_95": 0.4789
+      },
+      "Unoccupied": {
+        "precision": 0.8331,
+        "recall": 0.7182,
+        "ap50": 0.7583,
+        "ap50_95": 0.3504
+      }
+    },
+    "operating_point": {
+      "conf": 0.341,
+      "f1_mean": 0.8134,
+      "f1": {
+        "Occupied": 0.8523,
+        "Unoccupied": 0.7746
+      }
+    },
+    "counting": {
+      "frames": 215,
+      "overall": {
+        "Occupied": {
+          "mean_abs_error": 1.707,
+          "exact_share": 0.242
+        },
+        "Unoccupied": {
+          "mean_abs_error": 2.744,
+          "exact_share": 0.153
+        }
+      },
+      "per_recorder": {
+        "9c47c3": {
+          "frames": 89,
+          "Occupied": {
+            "mean_abs_error": 0.989,
+            "exact_share": 0.382
+          },
+          "Unoccupied": {
+            "mean_abs_error": 1.708,
+            "exact_share": 0.213
+          }
+        },
+        "84dfd8": {
+          "frames": 91,
+          "Occupied": {
+            "mean_abs_error": 2.473,
+            "exact_share": 0.088
+          },
+          "Unoccupied": {
+            "mean_abs_error": 3.681,
+            "exact_share": 0.11
+          }
+        },
+        "da709e": {
+          "frames": 35,
+          "Occupied": {
+            "mean_abs_error": 1.543,
+            "exact_share": 0.286
+          },
+          "Unoccupied": {
+            "mean_abs_error": 2.943,
+            "exact_share": 0.114
+          }
+        }
+      }
+    },
+    "speed_ms_per_image": {
+      "preprocess": 1.1,
+      "inference": 59.4,
+      "loss": 0.0,
+      "postprocess": 6.4
+    }
+  },
+  "test": {
+    "split": "test",
+    "map50": 0.7813,
+    "map50_95": 0.3774,
+    "per_class": {
+      "Occupied": {
+        "precision": 0.8502,
+        "recall": 0.8482,
+        "ap50": 0.8491,
+        "ap50_95": 0.4371
+      },
+      "Unoccupied": {
+        "precision": 0.7972,
+        "recall": 0.6193,
+        "ap50": 0.7134,
+        "ap50_95": 0.3178
+      }
+    },
+    "operating_point": {
+      "conf": 0.317,
+      "f1_mean": 0.7742,
+      "f1": {
+        "Occupied": 0.8404,
+        "Unoccupied": 0.708
+      }
+    },
+    "counting": {
+      "frames": 201,
+      "overall": {
+        "Occupied": {
+          "mean_abs_error": 1.458,
+          "exact_share": 0.214
+        },
+        "Unoccupied": {
+          "mean_abs_error": 2.811,
+          "exact_share": 0.085
+        }
+      },
+      "per_recorder": {
+        "9c47c3": {
+          "frames": 144,
+          "Occupied": {
+            "mean_abs_error": 1.333,
+            "exact_share": 0.229
+          },
+          "Unoccupied": {
+            "mean_abs_error": 2.472,
+            "exact_share": 0.076
+          }
+        },
+        "84dfd8": {
+          "frames": 21,
+          "Occupied": {
+            "mean_abs_error": 1.571,
+            "exact_share": 0.238
+          },
+          "Unoccupied": {
+            "mean_abs_error": 2.952,
+            "exact_share": 0.143
+          }
+        },
+        "da709e": {
+          "frames": 36,
+          "Occupied": {
+            "mean_abs_error": 1.889,
+            "exact_share": 0.139
+          },
+          "Unoccupied": {
+            "mean_abs_error": 4.083,
+            "exact_share": 0.083
+          }
+        }
+      }
+    },
+    "speed_ms_per_image": {
+      "preprocess": 0.9,
+      "inference": 53.8,
+      "loss": 0.0,
+      "postprocess": 5.5
+    }
+  }
+}
